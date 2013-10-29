@@ -440,6 +440,10 @@ public class CircuitBuilder
                 createCapacitor(elementCollection, params[0], params[1], params[2], params[3]);
                 break;
 
+            case 'd':
+                createDiode(elementCollection, params[0], params[1], params[2], params[3], params[4]);
+                break;
+
             case 'g':
                 createVCCS(elementCollection, params[0], params[1], params[2], params[3], params[4], params[5]);
                 break;
@@ -463,6 +467,10 @@ public class CircuitBuilder
             default:
                 throw new ParseException("Unrecognized element format: " + elementType);
         }
+    }
+
+    public void createDiode(ICollectElements elementCollection, String node1, String node2, String... params){
+        Diode r = new Diode(name, parseDouble(value));
     }
 
     /**
