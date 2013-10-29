@@ -12,6 +12,9 @@ public class DCAnalysis extends Analysis
 {
     private DCEquation equation;
     private DCEquation sweepEquation;
+    /**
+     * The original equation, one which derived directly from the netlist.
+     */
     private DCEquation originalEquation;
 
     DCSweep sweep;
@@ -29,6 +32,11 @@ public class DCAnalysis extends Analysis
         this.sweep2 = sweep2;
     }
 
+    /**
+     * Apply circuit element stamps from the circuit objects to the
+     * "equation" object of this instance of DCAnalysis object.
+     * @param circuit
+     */
     @Override
     public void extractSolvingInfo(Circuit circuit)
     {
@@ -45,7 +53,6 @@ public class DCAnalysis extends Analysis
             //long mode
             for (double j = sweep2.getStartValue(); j <= sweep2.getEndValue(); j += sweep2.getStep())
             {
-
 
                 sweepEquation = originalEquation.clone();
                 sweep2.getSource().modifyStamp(j, sweepEquation);

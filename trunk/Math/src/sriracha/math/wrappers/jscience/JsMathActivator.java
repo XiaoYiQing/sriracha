@@ -3,6 +3,11 @@ package sriracha.math.wrappers.jscience;
 import sriracha.math.MathActivator;
 import sriracha.math.interfaces.*;
 
+/**
+ * Object of this class are simply factory
+ * for objects in the math module: JsComplexMatrix,
+ * JsComplex, JsRealMatrix, JsRealVector, JsComplexVector.
+ */
 public class JsMathActivator extends MathActivator {
 
 

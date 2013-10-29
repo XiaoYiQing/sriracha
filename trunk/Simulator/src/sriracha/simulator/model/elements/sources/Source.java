@@ -23,7 +23,10 @@ public abstract class Source extends CircuitElement
 
 
     /**
-     * @param name element name from netlist
+     * Constructor initializing name, dc and complex ac values.
+     * @param name element name from netlist.
+     * @param dcValue the new dc value for the source.
+     * @param acPhasorValue the new ac value for the source.
      */
     protected Source(String name, double dcValue, IComplex acPhasorValue)
     {

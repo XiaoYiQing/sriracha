@@ -1,5 +1,6 @@
 package sriracha.math.interfaces;
 
+
 public interface IMatrix {
 
 

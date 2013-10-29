@@ -2,6 +2,8 @@ package sriracha.simulator.model;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * Circuit object, contains all of the elements and takes care of managing node to matrix index mappings.
@@ -28,7 +30,7 @@ public class Circuit implements ICollectElements {
         this.name = name;
         elements = new HashMap<String, CircuitElement>();
         nodeMap = new HashMap<String, Integer>();
-        nodeMap.put("0", -1);
+        nodeMap.put("0", -1);       //The ground should always be the first item
     }
 
     @Override
@@ -36,12 +38,7 @@ public class Circuit implements ICollectElements {
         elements.put(e.name, e);
     }
 
-    /**
-     * Add new node mapping, or returns existing
-     *
-     * @param nodeName - name of node from netlist
-     * @return index for node
-     */
+
     @Override
     public int assignNodeMapping(String nodeName) {
         if (!nodeMap.containsKey(nodeName)) {
@@ -90,15 +87,23 @@ public class Circuit implements ICollectElements {
 
     /**
      * Assigns indices to the additional variables required by some elements
-     * and also to internal nodes in subcircuits
+     * and also to internal nodes in subcircuits.
+     * (Called by setCircuit() of Simulator class)
      */
     public void assignAdditionalVarIndices() {
         int index = getNodeCount();
         for (CircuitElement e : elements.values()) {
             if (e.getExtraVariableCount() > 0) {
+                System.out.println(e);
                 e.setFirstVarIndex(index);
                 index += e.getExtraVariableCount();
             }
+        }
+        Iterator it = this.nodeMap.entrySet().iterator();
+        while(it.hasNext()){
+            Map.Entry newEntry = (Map.Entry)it.next();
+            System.out.println(newEntry.getKey()+ " " + newEntry.getValue());
+            it.remove();
         }
     }
 

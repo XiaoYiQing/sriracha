@@ -70,7 +70,9 @@ public class Simulator implements ISimulator
     }
 
     /**
-     * Sets a new Circuit, and remakes the this.generator and this.equation Fields
+     * Helper method of setNetlist(String netlist) method of Simulator class.
+     * Sets a new Circuit, and remakes the this.generator and this.equation Fields.
+     * Add the extra variables.
      *
      * @param circuit
      */
@@ -82,7 +84,6 @@ public class Simulator implements ISimulator
         {
             System.out.println(circuit);
         }
-
         return saveAll();
 
     }
@@ -90,6 +91,11 @@ public class Simulator implements ISimulator
 
     /**
      * Parses the netlist and builds an internal representation
+     * First: Clear all data.
+     * Second: Build the circuit.
+     * Third: Set up the circuit and assign all the extra variables.
+     * Fourth: save all the requested analysis and set the analysis (apply stamps)
+     * Fifth: save the outputs.
      *
      * @param netlist - the text circuit and analysis description
      */
@@ -100,10 +106,13 @@ public class Simulator implements ISimulator
 
 
         builder = new CircuitBuilder(netlist);
+        //Add the extra variables.
         setCircuit(builder.getCircuit());
 
+        //Save analysis objects
         requestedAnalysis.addAll(builder.getAnalysisTypes());
 
+        //Set up the analysis objects
         for (Analysis a : requestedAnalysis)
         {
             a.extractSolvingInfo(circuit);

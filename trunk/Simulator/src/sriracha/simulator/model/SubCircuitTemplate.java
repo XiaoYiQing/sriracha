@@ -5,6 +5,9 @@ import java.util.HashMap;
 
 /**
  * Information necessary for building a new subcircuit object
+ * A SubCircuitTemplate contains an internal node map contruscted thourgh netlist
+ * instruction, just like a normal circuit.
+ * The node map's first few nodes are external connection nodes.
  */
 public class SubCircuitTemplate implements ICollectElements
 {
@@ -14,6 +17,9 @@ public class SubCircuitTemplate implements ICollectElements
      */
     private String name;
 
+    /**
+     * Number of external connections.
+     */
     private int nodeCount;
 
 
@@ -35,8 +41,8 @@ public class SubCircuitTemplate implements ICollectElements
     private ArrayList<CircuitElement> elements;
 
     /**
-     * @param name      - name given to the subcircuit definition in the netlist
-     * @param nodeCount - number of external nodes in subcircuit template
+     * @param name name given to the subcircuit definition in the netlist
+     * @param nodeCount number of external nodes in subcircuit template
      */
     public SubCircuitTemplate(String name, int nodeCount)
     {
@@ -60,10 +66,11 @@ public class SubCircuitTemplate implements ICollectElements
     }
 
     /**
-     * Add new node mapping
-     * This mapping system should use sequential integers
-     * starting from 0 where the first ones correspond to the external terminals
-     * in the order they are defined in the netlist
+     * Add new internal node mapping for the subcircuit.
+     * Node indices are assigned to node names in a first come first served basis (in ascending index order)
+     * The first few node indices (which amounts to 1+"nodeCount" number of nodes) are reserved for
+     * the ground (-1 index) and external nodes, in this order.
+     * The external nodes/terminals are in the order they are defined in the netlist
      *
      * @param nodeName - name of node from netlist
      * @return index for node
@@ -71,6 +78,7 @@ public class SubCircuitTemplate implements ICollectElements
     @Override
     public int assignNodeMapping(String nodeName)
     {
+        //only create new nodeName & nodeIndex pairs when unused nodeNames appear.
         if (!internalNodeMap.containsKey(nodeName))
         {
             internalNodeMap.put(nodeName, internalNodeMap.size() - 1);
@@ -90,7 +98,7 @@ public class SubCircuitTemplate implements ICollectElements
 
     /**
      * Returns the number of internal nodes (total - external)
-     * does not count ground if present
+     * does not count ground
      *
      * @return internal node count
      */

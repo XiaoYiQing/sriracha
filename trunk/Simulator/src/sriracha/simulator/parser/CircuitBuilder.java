@@ -23,10 +23,23 @@ import java.util.*;
 public class CircuitBuilder
 {
 
+    /**
+     *  Map of subcircuits using a String name as key and a SubCircuitTemplate as value
+     */
     private HashMap<String, SubCircuitTemplate> subcircuitTemplates = new HashMap<String, SubCircuitTemplate>();
 
+    /**
+     * The main circuit object representing the intended netlist circuit
+     */
     private Circuit circuit;
+
+    /**
+     * List of Analysis
+     */
     private ArrayList<Analysis> analysisTypes = new ArrayList<Analysis>();
+    /**
+     * List of  outputFilters
+     */
     private ArrayList<OutputFilter> outputFilters = new ArrayList<OutputFilter>();
 
     public Circuit getCircuit()
@@ -34,6 +47,10 @@ public class CircuitBuilder
         return circuit;
     }
 
+    /**
+     * Return a read-only Analysis object ArrayList.
+     * @return read-only Analysis ArrayList.
+     */
     public List<Analysis> getAnalysisTypes()
     {
         return Collections.unmodifiableList(analysisTypes);
@@ -44,6 +61,11 @@ public class CircuitBuilder
         return Collections.unmodifiableList(outputFilters);
     }
 
+    /**
+     * Constructor which breaks down the netlist into subcircuits, circuit parts,
+     * analysis objects and OutputFilter object.
+     * @param netlist The target netlist representing the new circuit.
+     */
     public CircuitBuilder(String netlist)
     {
 
@@ -72,6 +94,7 @@ public class CircuitBuilder
                 otherLines.add(line);
         }
 
+        //Add all circuit element list into on single list.
         ArrayList<String> linesList = new ArrayList<String>();
         linesList.addAll(sourceLines);
         linesList.addAll(dependentSourceLines);
@@ -86,9 +109,11 @@ public class CircuitBuilder
 
             if (line.equals(".END")) break;
 
+            //If String is empty, part of a comment, or an empty space, move to next String
             if (line.length() == 0 || line.charAt(0) == '*' || Character.isWhitespace(line.charAt(0)))
                 continue;
 
+            //If String represent a normal circuit element.
             if (line.charAt(0) != '.')
                 parseCircuitElement(circuit, line);
             else if (line.startsWith(".SUBCKT"))
@@ -247,6 +272,11 @@ public class CircuitBuilder
         return params.toArray(new String[params.size()]);
     }
 
+    /**
+     * Create an Analysis object depending on the content of line (AC, DC, etc.)
+     * @param line Instruction on the category of analysis requested.
+     * @return The requested Analysis object.
+     */
     public Analysis parseAnalysis(String line)
     {
         if (line.startsWith(".AC"))
@@ -257,6 +287,11 @@ public class CircuitBuilder
             throw new UnsupportedOperationException("This format of analysis is currently not supported: " + line);
     }
 
+    /**
+     * Create an DCAnalysis object accordingly to the specs from the input String line
+     * @param line netlist description of the target DC analysis
+     * @return The DCAnalysis object created
+     */
     private DCAnalysis parseDCAnalysis(String line)
     {
         String[] params = line.split("\\s+");
@@ -297,6 +332,11 @@ public class CircuitBuilder
         return new DCAnalysis(sweep1, sweep2);
     }
 
+    /**
+     * Create an ACAnalysis object accordingly to the specs from the input String line
+     * @param line netlist description of the target AC analysis
+     * @return The ACAnalysis object created
+     */
     private ACAnalysis parseSmallSignal(String line)
     {
         String[] params = line.split("\\s+");
@@ -327,25 +367,45 @@ public class CircuitBuilder
         return new ACAnalysis(subType, rangeStart, rangeStop, numPoints);
     }
 
+    /**
+     * Create a subcircuit using the sub-netlist
+     *
+     * @param lines sub-netlist from which the subcircuit is created.
+     */
     private void parseSubCircuitTemplate(String[] lines)
     {
+        //Splitting the first line into subcircuit external connections.
         String[] params = lines[0].split("\\s+");
 
+        //The first line of the subcircuit must contain the name of the subcircuit
+        //and at least two nodes
         if (params.length < 3)
             throw new ParseException("Not enough parameters for a subcircuit template: " + lines[0]);
 
+        //Assign the name of the template
         String name = params[1];
+        //Assign the external nodes of the template
         SubCircuitTemplate subCircuit = new SubCircuitTemplate(name, params.length - 2);
         for (int i = 2; i < params.length; i++)
             subCircuit.assignNodeMapping(params[i]);
 
-        // skip the first line (the SUBCKT line)
+        //Set up the internal mapping of the circuit (iterating through internal circuit elements.)
         for (int i = 1; i < lines.length; i++)
             parseCircuitElement(subCircuit, lines[i]);
 
+        //Add new addition to subcircuit template map.
         subcircuitTemplates.put(name, subCircuit);
     }
 
+    /**
+     * Add the new circuit element to the circuit object.
+     * The netlist representation of a standard circuit element does not start with '.'
+     * The parameter circuit's node indices will be updated appropriately whenever unused node names
+     * are detected within the netlist representation of the new circuit element
+     *
+     * @param elementCollection The circuit in which the element is to be added.
+     * @param line The standard circuit element in String representation.
+     */
     private void parseCircuitElement(ICollectElements elementCollection, String line)
     {
         char elementType = Character.toLowerCase(line.charAt(0));
@@ -405,6 +465,16 @@ public class CircuitBuilder
         }
     }
 
+    /**
+     * Add a new circuit element using one of the subcircuit template.  It is expected that a
+     * subcircuit by the name of subCircuitName has already been created or is available in
+     * subcircuitTemplates.
+     * @param elementCollection The collection in which the subcircuit is to be added
+     * @param name Name of this subcircuit (Must be unique)
+     * @param subcircuitName The target subcircuitTemplates' name.
+     * @param nodes The netlist list of external node names of the subcircuit. The number of node names is expected
+     *              to match the number of external nodes of the intended subcircuit template.
+     */
     private void createSubcircuit(ICollectElements elementCollection, String name, String subcircuitName, String[] nodes)
     {
         if (!subcircuitTemplates.containsKey(subcircuitName))
@@ -412,14 +482,25 @@ public class CircuitBuilder
 
         SubCircuit sc = new SubCircuit(name, subcircuitTemplates.get(subcircuitName));
 
+        //Set up the external nodes of the subcircuit
         int[] nodeIndices = new int[nodes.length];
         for (int i = 0; i < nodes.length; i++)
             nodeIndices[i] = elementCollection.assignNodeMapping(nodes[i]);
 
+        //Setting up the node (external) indices, just like any circuit element would do when created.
         sc.setNodeIndices(nodeIndices);
+        //Add element as a normal circuit element
         elementCollection.addElement(sc);
     }
 
+    /**
+     * Create a new current source and put it into the circuit object
+     * @param elementCollection The collection in which the current source is to be added
+     * @param name Name of this current source (Must be unique)
+     * @param node1 +node, where the current is heading
+     * @param node2 -node, where the current leaves
+     * @param params netlist instruction specifying the current source's specs.
+     */
     private void createCurrentSource(ICollectElements elementCollection, String name, String node1, String node2, String... params)
     {
         SourceValue value = findPhasorOrDC(params);
@@ -430,12 +511,25 @@ public class CircuitBuilder
         else
             source = new CurrentSource(name, value.DC);
 
+        /*
+        * Suggested Code instead of the above.
+        * source = new CurrentSource(name, value.DC, value.AC);
+        * */
+
         int node1Index = elementCollection.assignNodeMapping(node1);
         int node2Index = elementCollection.assignNodeMapping(node2);
         source.setNodeIndices(node1Index, node2Index);
         elementCollection.addElement(source);
     }
 
+    /**
+     * Create a new voltage source and put it into the circuit object
+     * @param elementCollection The collection in which the voltage source is to be added
+     * @param name Name of this voltage source (Must be unique)
+     * @param node1 +node
+     * @param node2 -node
+     * @param params netlist instruction specifying the voltage source's specs.
+     */
     private void createVoltageSource(ICollectElements elementCollection, String name, String node1, String node2, String... params)
     {
         SourceValue value = findPhasorOrDC(params);
@@ -448,15 +542,31 @@ public class CircuitBuilder
         elementCollection.addElement(source);
     }
 
+    /**
+     * Create a SourceValue object based on the information provided by params.
+     * Possible formats (default value of ac is amplitude=1, phase=0) :
+     *      ["DC", amp],
+     *      ["AC"],
+     *      ["AC", amp],
+     *      ["AC", amp, phase],
+     *      ["DC", value, "AC"],
+     *      ["DC", value, "AC", amp],
+     *      ["DC", value, "AC", amp, phase]
+     * @param params array of Strings.
+     * @return The newly created SourceValue.
+     */
     private SourceValue findPhasorOrDC(String... params)
     {
+        //dc SourceValue if params has only one String item.
         if (params.length == 1)
             return new SourceValue(parseDouble(params[0]));
 
         if (params[0].equalsIgnoreCase("DC"))
         {
+            //params for dc case cannot have more than 2 items.
             if (params.length > 2)
             {
+                //if length > 2, must assign both AC and DC values in new SourceValue
                 if (params[2].equalsIgnoreCase("AC"))
                 {
                     double amplitude = 1, phase = 0;
@@ -470,14 +580,17 @@ public class CircuitBuilder
 
                     return new SourceValue(parseDouble(params[1]), MathActivator.Activator.complex(real, imaginary));
                 }
+                //Invalid params syntax.
                 else throw new ParseException("Invalid parameters on Voltage Source " + params);
             }
             else
             {
+                //params for dc case only.
                 return new SourceValue(parseDouble(params[1]));
             }
 
         }
+        //params for ac case only.
         else if (params[0].equalsIgnoreCase("AC"))
         {
             double amplitude = 1, phase = 0;
@@ -492,9 +605,18 @@ public class CircuitBuilder
             return new SourceValue(MathActivator.Activator.complex(real, imaginary));
         }
         else
+            //Invalid params syntax.
             throw new ParseException("Invalid source format: " + params[0]);
     }
 
+    /**
+     * Add a resistor to the circuit object
+     * @param elementCollection The collection in which the resistor is to be added
+     * @param name Name of this resistor (Must be unique)
+     * @param node1 n1
+     * @param node2 n2
+     * @param value Resistance value in Ohms
+     */
     private void createResistor(ICollectElements elementCollection, String name, String node1, String node2, String value)
     {
         Resistor r = new Resistor(name, parseDouble(value));
@@ -504,6 +626,14 @@ public class CircuitBuilder
         elementCollection.addElement(r);
     }
 
+    /**
+     * Add a new capacitor to the circuit object
+     * @param elementCollection The collection in which the capacitor is to be added
+     * @param name Name of this capacitor (Must be unique)
+     * @param node1 n1
+     * @param node2 n2
+     * @param value Capacitance value in Farad
+     */
     private void createCapacitor(ICollectElements elementCollection, String name, String node1, String node2, String value)
     {
         Capacitor c = new Capacitor(name, parseDouble(value));
@@ -513,6 +643,14 @@ public class CircuitBuilder
         elementCollection.addElement(c);
     }
 
+    /**
+     * Add a new inductor to the circuit object
+     * @param elementCollection The collection in which the inductor is to be added
+     * @param name Name of this inductor (Must be unique)
+     * @param node1 n1
+     * @param node2 n2
+     * @param value Inductor value in Henry
+     */
     private void createInductor(ICollectElements elementCollection, String name, String node1, String node2, String value)
     {
         Inductor i = new Inductor(name, parseDouble(value));
@@ -522,19 +660,47 @@ public class CircuitBuilder
         elementCollection.addElement(i);
     }
 
+    /**
+     * Add a new voltage controlled current source (vccs) to the circuit object
+     * @param elementCollection The collection in which the vccs is to be added
+     * @param name Name of the vccs (Must be unique)
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param control1 The independent side's +node
+     * @param control2 The independent side's -node
+     * @param value Control factor by which the generated current is related to the input voltage
+     */
     private void createVCCS(ICollectElements elementCollection, String name, String node1, String node2, String control1, String control2, String value)
     {
         VCCS vccs = new VCCS(name, parseDouble(value));
         createVoltageControlledSource(elementCollection, node1, node2, control1, control2, vccs);
     }
 
+    /**
+     * Add a new voltage controlled voltage source (vcvs) to the circuit object
+     * @param elementCollection The collection in which the vcvs is to be added
+     * @param name Name of the vcvs (Must be unique)
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param control1 The independent side's +node
+     * @param control2 The independent side's -node
+     * @param value Control factor by which the generated voltage is related to the input voltage
+     */
     private void createVCVS(ICollectElements elementCollection, String name, String node1, String node2, String control1, String control2, String value)
     {
         VCVS vcvs = new VCVS(name, parseDouble(value));
         createVoltageControlledSource(elementCollection, node1, node2, control1, control2, vcvs);
     }
 
-
+    /**
+     * Add a new current controlled current source (cccs) to the circuit object
+     * @param elementCollection The collection in which the cccs is to be added
+     * @param name Name of the cccs (Must be unique)
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param control The name of the dummy voltage source used to track the control current
+     * @param value Control factor by which the generated current is related to the input current
+     */
     private void createCCCS(ICollectElements elementCollection, String name, String node1, String node2, String control, String value)
     {
         CircuitElement vSource = circuit.getElement(control);
@@ -543,6 +709,15 @@ public class CircuitBuilder
         createCurrentControlledSource(elementCollection, node1, node2, cccs);
     }
 
+    /**
+     * Add a new current controlled current source (ccvs) to the circuit object
+     * @param elementCollection The collection in which the ccvs is to be added
+     * @param name Name of the ccvs (Must be unique)
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param control The name of the dummy voltage source used to track the control current
+     * @param value Control factor by which the generated voltage is related to the input current
+     */
     private void createCCVS(ICollectElements elementCollection, String name, String node1, String node2, String control, String value)
     {
         CircuitElement vSource = circuit.getElement(control);
@@ -550,6 +725,15 @@ public class CircuitBuilder
         createCurrentControlledSource(elementCollection, node1, node2, ccvs);
     }
 
+    /**
+     * Helper method to add the new voltage control source (VCS) into the collection object.
+     * @param elementCollection The collection in which the VCS is to be added
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param control1 The independent side's +node
+     * @param control2 The independent side's -node
+     * @param source The target VCS object
+     */
     private void createVoltageControlledSource(ICollectElements elementCollection, String node1, String node2, String control1, String control2, VCSource source)
     {
         int node1Index = elementCollection.assignNodeMapping(node1);
@@ -560,6 +744,13 @@ public class CircuitBuilder
         elementCollection.addElement(source);
     }
 
+    /**
+     * Helper method to add the new current control source (CCS) into the collection object.
+     * @param elementCollection The collection in which the ccs is to be added
+     * @param node1 The dependent side's +node
+     * @param node2 The dependent side's -node
+     * @param source The target CCS object
+     */
     private void createCurrentControlledSource(ICollectElements elementCollection, String node1, String node2, CCSource source)
     {
         int node1Index = elementCollection.assignNodeMapping(node1);
@@ -625,21 +816,44 @@ public class CircuitBuilder
 
     }
 
+    /**
+     * Helper private class to store DC or AC, or both values as one object.
+     * NOTE: AC variable is IComplex object, which contains real and imaginary part.
+     */
     private class SourceValue
     {
+        /**
+         * dc value stored in SourceValue object
+         */
         public double DC = 0;
+        /**
+         * ac value stored in SourceValue object
+         */
         public IComplex AC = MathActivator.Activator.complex(0, 0);
 
+        /**
+         * Construct SourceValue object initializing dc value only.
+         * @param dc dc value
+         */
         public SourceValue(double dc)
         {
             DC = dc;
         }
 
+        /**
+         * Construct SourceValue object initializing ac value only.
+         * @param ac ac value
+         */
         public SourceValue(IComplex ac)
         {
             AC = ac;
         }
 
+        /**
+         * Construct SourceValue object  initializing both ac and dc values.
+         * @param DC dc value
+         * @param AC ac value
+         */
         private SourceValue(double DC, IComplex AC)
         {
             this.DC = DC;

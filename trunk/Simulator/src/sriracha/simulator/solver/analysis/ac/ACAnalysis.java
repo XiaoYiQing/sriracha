@@ -9,13 +9,25 @@ import sriracha.simulator.solver.analysis.AnalysisType;
 
 public final class ACAnalysis extends Analysis
 {
-
+    /**
+     * Type of scale for output octave and decade are log scales
+     */
     private ACSubType subType;
 
     private ACEquation equation;
 
+    /**
+     * Start frequency
+     */
     private double fStart;
+    /**
+     * End Frequency
+     */
     private double fEnd;
+
+    /**
+     * For Linear, total number of frequency points or number per decade/octave
+     */
     private int points;
 
     /**
@@ -89,8 +101,7 @@ public final class ACAnalysis extends Analysis
                 if (points == 1)
                 { //to avoid divide by 0 issues
                     results.addVector(fStart, equation.solve(fStart));
-                } else
-                {
+                } else {
                     double interval = (fEnd - fStart) / (points - 1);
                     for (int i = 0; i < points; i++)
                     {

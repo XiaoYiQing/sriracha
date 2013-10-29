@@ -23,6 +23,24 @@ public class DCEquation
         b = MathActivator.Activator.realVector(nodeCount);
     }
 
+    private DCEquation(IRealMatrix c, IRealVector b)
+    {
+        this.C = c;
+        this.b = b;
+    }
+
+    /**
+     * This method acts as the official constructor of DCEquation objects.
+     * The method apply the stamps of the circuit elements to the matrix equations.
+     * The "applyDC" method of circuit elements will call the "applyMatrixStamp" or
+     * "applySourceVectorStamp" method of DCEquation class through the elements of
+     * the circuit.
+     *
+     * @param circuit Target circuit object from which circuit elements are obtained.
+     *                It is expected to have already been set up with all the
+     *                extra variables present.
+     * @return
+     */
     public static DCEquation generate(Circuit circuit)
     {
         DCEquation equation = new DCEquation(circuit.getMatrixSize());
@@ -49,7 +67,12 @@ public class DCEquation
         return C.solve(b);
     }
 
-
+    /**
+     * Apply stamp value to the matrix equation.
+     * @param i x matrix coordinate
+     * @param j y matrix coordinate
+     * @param value
+     */
     public void applyMatrixStamp(int i, int j, double value)
     {
 
@@ -62,17 +85,6 @@ public class DCEquation
 
     }
 
-    private DCEquation(IRealMatrix c, IRealVector b)
-    {
-        this.C = c;
-        this.b = b;
-    }
-
-    public DCEquation clone()
-    {
-        return new DCEquation(C.clone(), b.clone());
-    }
-
     public void applySourceVectorStamp(int i, double d)
     {
         //no stamps to ground
@@ -80,6 +92,13 @@ public class DCEquation
 
         b.addValue(i, d);
     }
+
+    public DCEquation clone()
+    {
+        return new DCEquation(C.clone(), b.clone());
+    }
+
+
 
 
 }

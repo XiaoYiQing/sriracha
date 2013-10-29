@@ -3,8 +3,13 @@ package sriracha.math.wrappers.jscience;
 import org.jscience.mathematics.number.Complex;
 import sriracha.math.interfaces.IComplex;
 
+/**
+ * Wrapper class for the Complex class from jscience
+ * library.
+ */
 class JsComplex implements IComplex {
 
+    //Note: Complex is from external library.
     Complex value;
 
     public JsComplex(double real, double imag) {

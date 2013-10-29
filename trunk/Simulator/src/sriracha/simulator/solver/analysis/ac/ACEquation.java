@@ -15,7 +15,9 @@ import sriracha.simulator.model.CircuitElement;
  */
 public class ACEquation
 {
-
+    /**
+     * Factory object for the Math module's objects.
+     */
     private MathActivator activator = MathActivator.Activator;
 
     private int circuitNodeCount;
@@ -27,7 +29,11 @@ public class ACEquation
 
     private IComplexVector b;
 
-
+    /**
+     * private constructor creating a new ACEquation object with matrix equation
+     * size indicated by circuitNodeCount.
+     * @param circuitNodeCount
+     */
     private ACEquation(int circuitNodeCount)
     {
         this.circuitNodeCount = circuitNodeCount;
@@ -36,16 +42,7 @@ public class ACEquation
         b = activator.complexVector(circuitNodeCount);
     }
 
-    /**
-     * builds matrix for solving circuit at specified frequency point
-     *
-     * @param frequency in Hz
-     * @return C + G*2*PI*frequency
-     */
-    private IComplexMatrix buildMatrixA(double frequency)
-    {
-        return (IComplexMatrix) C.plus(G.times(Math.PI * 2 * frequency));
-    }
+
 
     /**
      * solves the equation for the specified frequency point
@@ -68,7 +65,23 @@ public class ACEquation
         return a.solve(b);
     }
 
+    /**
+     * builds matrix for solving circuit at specified frequency point
+     *
+     * @param frequency in Hz
+     * @return C + G*2*PI*frequency
+     */
+    private IComplexMatrix buildMatrixA(double frequency)
+    {
+        return (IComplexMatrix) C.plus(G.times(Math.PI * 2 * frequency));
+    }
 
+    /**
+     * Apply complex matrix stamp value to the complex matrix equation.
+     * @param i x matrix coordinate
+     * @param j y matrix coordinate
+     * @param value
+     */
     public void applyComplexMatrixStamp(int i, int j, double value)
     {
         //no stamps to ground
@@ -80,6 +93,12 @@ public class ACEquation
         }
     }
 
+    /**
+     * Apply real matrix stamp value to the real matrix equation.
+     * @param i x matrix coordinate
+     * @param j y matrix coordinate
+     * @param value
+     */
     public void applyRealMatrixStamp(int i, int j, double value)
     {
         //no stamps to ground
@@ -110,7 +129,18 @@ public class ACEquation
         return clone;
     }
 
-
+    /**
+     * This method acts as the official constructor of ACEquation objects.
+     * The method apply the stamps of the circuit elements to the matrix equation.
+     * The "applyAC" method of circuit elements will call "applyRealMatrixStamp",
+     * "applyComplexMatrixStamp" or "applySourceVectorStamp" method of ACEquation
+     * class through the elements of the circuit.
+     *
+     * @param circuit Target circuit object from which circuit elements are obtained.
+     *                It is expected to have already been set up with all the
+     *                extra variables present.
+     * @return
+     */
     public static ACEquation generate(Circuit circuit)
     {
         ACEquation equation = new ACEquation(circuit.getMatrixSize());

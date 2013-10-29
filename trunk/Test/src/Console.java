@@ -75,7 +75,8 @@ public class Console
 
 
             //no args, running from IDE insert quick test stuff here ...
-            runAndPrint("C:\\Users\\antoine\\Dev\\Sriracha\\bnetlist.txt");
+            //runAndPrint("C:\\Users\\antoine\\Dev\\Sriracha\\bnetlist.txt");
+            runAndPrint("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist.txt");
 
         }
 

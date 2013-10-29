@@ -40,15 +40,16 @@ public abstract class CircuitElement
     protected abstract int[] getNodeIndices();
 
     /**
-     * Some elements add extra variables to the matrix. This method serves to set the index for the
-     * first such variables and should be overridden in all appropriate elements,
-     * the remaining variables take numbers sequentially.
+     * Some circuit elements require extra variables in the matrix in order to solve the
+     * circuit equations.  This method is expected to be called after all nodes of the parent
+     * circuit have been assigned an index.  Any extra variables or nodes to be added are assigned
+     * index values incremented starting from the final index value of the parent circuit.
      *
-     * @param i index for the first of the extra variables required.
+     * @param i (the final index of the parent circuit) + 1, which will be the starting index
+     *          of all internal nodes or variables required to be added from this circuit element.
      */
     public void setFirstVarIndex(int i)
-    {
-    }
+    {}
 
     /**
      * @return number of actual nodes this element is physically connected to

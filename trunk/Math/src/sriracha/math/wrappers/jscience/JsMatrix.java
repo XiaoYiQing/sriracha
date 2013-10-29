@@ -7,6 +7,10 @@ import org.jscience.mathematics.vector.Float64Matrix;
 import org.jscience.mathematics.vector.Matrix;
 import sriracha.math.interfaces.IMatrix;
 
+/**
+ * Classes inheriting JsMatrix class are wrapper class
+ * of the jscience library's Matrix class.
+ */
 abstract class JsMatrix implements IMatrix
 {
 

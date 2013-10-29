@@ -20,6 +20,12 @@ public class VoltageSource extends Source
         super(name, 0, acPhasorValue);
     }
 
+    /**
+     * Constructor initializing name, dc and complex ac values for the voltage source.
+     * @param name element name from netlist.
+     * @param dcValue the new dc value for the source.
+     * @param acPhasorValue the new ac value for the source.
+     */
     public VoltageSource(String name, double dcValue, IComplex acPhasorValue)
     {
         super(name, dcValue, acPhasorValue);
