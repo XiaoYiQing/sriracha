@@ -79,4 +79,10 @@ public class Diode extends CircuitElement{
     public void applyAC(ACEquation equation) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
+
+    @Override
+    public String toString()
+    {
+        return super.toString() + " " + is + " " + vt;
+    }
 }

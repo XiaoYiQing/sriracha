@@ -94,10 +94,10 @@ public class Circuit implements ICollectElements {
         int index = getNodeCount();
         for (CircuitElement e : elements.values()) {
             if (e.getExtraVariableCount() > 0) {
-                System.out.println(e);
                 e.setFirstVarIndex(index);
                 index += e.getExtraVariableCount();
             }
+            System.out.println(e);
         }
         Iterator it = this.nodeMap.entrySet().iterator();
         while(it.hasNext()){
