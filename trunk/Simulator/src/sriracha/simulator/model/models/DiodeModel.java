@@ -1,5 +1,7 @@
 package sriracha.simulator.model.models;
 
+import sriracha.simulator.model.elements.Diode;
+
 /**
  * Created with IntelliJ IDEA.
  * User: yiqing
@@ -10,20 +12,35 @@ package sriracha.simulator.model.models;
 public class DiodeModel extends CircuitElementModel{
 
     private double is;
+    private double vt;
 
     public DiodeModel(char key, String name, String line) {
         super(key, name);
 
         //parse the ".model" line's characteristics between parentheses into separate Strings
         //example: .model mName D (IS=0 RS=0 ...)
-        String[] parameters = line.substring(line.indexOf("(")+1, line.indexOf(")")).split("\\s+");
+        String parameterSect = line.substring(line.indexOf("(") + 1, line.indexOf(")"));
 
-        for(String s: parameters){
-            String characteristicName = s.substring(0,s.indexOf("="));
-            characteristicName.toLowerCase();
-            if(characteristicName.equals("is")){
-                is = Double.parseDouble(s.substring(s.indexOf("=")+1, s.length()-1));
+        String[] parameters;
+
+        try{
+            parameters = parameterSect.split("\\s+");
+
+            for(String str: parameters){
+                String characteristicName = str.substring(0,str.indexOf("="));
+                characteristicName.toLowerCase();
+                if(characteristicName.equals("is")){
+                    is = Double.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
+                }else if(characteristicName.equals("vt"))
+                    vt = Double.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
             }
+        }catch(StringIndexOutOfBoundsException e1){
+            e1.printStackTrace();
+            System.out.println("Something went wrong with Diode model parameter netlist.");
+            System.out.println("Default model will be applied.");
+
+            is = Diode.STD_IS;
+            vt = Diode.STD_VT;
         }
     }
 }
