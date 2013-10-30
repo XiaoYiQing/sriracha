@@ -4,6 +4,7 @@ import sriracha.math.MathActivator;
 import sriracha.math.interfaces.IComplex;
 import sriracha.simulator.model.*;
 import sriracha.simulator.model.elements.Capacitor;
+import sriracha.simulator.model.elements.Diode;
 import sriracha.simulator.model.elements.Inductor;
 import sriracha.simulator.model.elements.Resistor;
 import sriracha.simulator.model.elements.ctlsources.*;
@@ -441,7 +442,7 @@ public class CircuitBuilder
                 break;
 
             case 'd':
-                createDiode(elementCollection, params[0], params[1], params[2], params[3], params[4]);
+                createDiode(elementCollection, params[0], params[1], params[2], additionalParams);
                 break;
 
             case 'g':
@@ -466,11 +467,26 @@ public class CircuitBuilder
 
             default:
                 throw new ParseException("Unrecognized element format: " + elementType);
+
+
         }
     }
 
-    public void createDiode(ICollectElements elementCollection, String node1, String node2, String... params){
-        Diode r = new Diode(name, parseDouble(value));
+    public void createDiode(ICollectElements elementCollection, String name, String node1, String node2, String... params){
+        Diode d;
+        if(params.length == 1){
+            d = new Diode(name, parseDouble(params[0]));
+        }else if(params.length == 2){
+            d = new Diode(name, parseDouble(params[0]), parseDouble(params[0]));
+        }else if(params.length==0){
+            d = new Diode(name);
+        }else
+            throw new ParseException("Invalid numbers of parameters on Diode: " + name);
+
+        int node1Index = elementCollection.assignNodeMapping(node1);
+        int node2Index = elementCollection.assignNodeMapping(node2);
+        d.setNodeIndices(node1Index, node2Index);
+        elementCollection.addElement(d);
     }
 
     /**
