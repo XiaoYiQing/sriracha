@@ -11,6 +11,8 @@ import sriracha.simulator.model.elements.ctlsources.*;
 import sriracha.simulator.model.elements.sources.CurrentSource;
 import sriracha.simulator.model.elements.sources.Source;
 import sriracha.simulator.model.elements.sources.VoltageSource;
+import sriracha.simulator.model.models.CircuitElementModel;
+import sriracha.simulator.model.models.DiodeModel;
 import sriracha.simulator.solver.analysis.Analysis;
 import sriracha.simulator.solver.analysis.AnalysisType;
 import sriracha.simulator.solver.analysis.ac.ACAnalysis;
@@ -39,9 +41,14 @@ public class CircuitBuilder
      */
     private ArrayList<Analysis> analysisTypes = new ArrayList<Analysis>();
     /**
-     * List of  outputFilters
+     * List of outputFilters
      */
     private ArrayList<OutputFilter> outputFilters = new ArrayList<OutputFilter>();
+
+    /**
+     * List of circuit element models, such as models for diodes and BJTs.
+     */
+    private HashMap<String, CircuitElementModel>  circuitElementModels = new HashMap<String, CircuitElementModel>();
 
     public Circuit getCircuit()
     {
@@ -97,11 +104,17 @@ public class CircuitBuilder
                         continue;
                     }
 
-
                     subCircuitLines.add(lines[i]);
                     i++;
                 }
                 parseSubCircuitTemplate(subCircuitLines.toArray(new String[subCircuitLines.size()]));
+            }else if(line.startsWith(".MODEL")){
+                CircuitElementModel newModel = parseCircuitElementModel(line);
+                if(!circuitElementModels.containsKey(newModel.getName())){
+                    circuitElementModels.put(newModel.getName(), newModel);
+                    System.out.println(newModel.getName());
+                }else
+                    System.out.println("Model name already in use.");
             }else if (line.startsWith(".AC") || line.startsWith(".DC")){
                 analysisTypes.add(parseAnalysis(line));
             }else if (line.startsWith(".PRINT")){
@@ -381,6 +394,13 @@ public class CircuitBuilder
 
         //Add new addition to subcircuit template map.
         subcircuitTemplates.put(name, subCircuit);
+    }
+
+    public CircuitElementModel parseCircuitElementModel(String line){
+
+        CircuitElementModel newModel;
+        newModel = CircuitElementModel.generateModel(line);
+        return newModel;
     }
 
     /**
@@ -788,7 +808,7 @@ public class CircuitBuilder
      * @param str - the string to parse
      * @return result as a double
      */
-    private double parseDouble(String str)
+    public static double parseDouble(String str)
     {
 
         int i = 0;

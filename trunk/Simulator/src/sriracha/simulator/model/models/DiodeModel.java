@@ -1,6 +1,7 @@
 package sriracha.simulator.model.models;
 
 import sriracha.simulator.model.elements.Diode;
+import sriracha.simulator.parser.CircuitBuilder;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,8 +15,8 @@ public class DiodeModel extends CircuitElementModel{
     private double is;
     private double vt;
 
-    public DiodeModel(char key, String name, String line) {
-        super(key, name);
+    public DiodeModel(char key, String line) {
+        super(key, line.split("\\s+")[1]);
 
         //parse the ".model" line's characteristics between parentheses into separate Strings
         //example: .model mName D (IS=0 RS=0 ...)
@@ -28,11 +29,11 @@ public class DiodeModel extends CircuitElementModel{
 
             for(String str: parameters){
                 String characteristicName = str.substring(0,str.indexOf("="));
-                characteristicName.toLowerCase();
-                if(characteristicName.equals("is")){
-                    is = Double.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
-                }else if(characteristicName.equals("vt"))
-                    vt = Double.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
+                characteristicName.toUpperCase();
+                if(characteristicName.equals("IS")){
+                    is = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
+                }else if(characteristicName.equals("VT"))
+                    vt = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
             }
         }catch(StringIndexOutOfBoundsException e1){
             e1.printStackTrace();

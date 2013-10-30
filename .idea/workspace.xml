@@ -12,7 +12,7 @@
     <file path="/fragment.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1379702167405" ignored="false" />
     <file path="/WireManager.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380666651345" ignored="false" />
     <file path="/CircuitDesigner.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380581236001" ignored="false" />
-    <file path="/CircuitBuilder.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383172209924" ignored="false" />
+    <file path="/CircuitBuilder.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383175948620" ignored="false" />
     <file path="/JsComplex.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1382559788963" ignored="false" />
     <file path="$PROJECT_DIR$/../../IntelliJ/.idea/workspace.xml" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1381358510539" ignored="false" />
     <file path="$PROJECT_DIR$/../../IntelliJ/src/HelloWorld.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1381358469975" ignored="false" />
@@ -35,8 +35,8 @@
     <file path="/ACEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1382567678300" ignored="false" />
     <file path="/Console.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383082071469" ignored="false" />
     <file path="/Diode.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383092778758" ignored="false" />
-    <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383096176548" ignored="false" />
-    <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383169281987" ignored="false" />
+    <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383175222401" ignored="false" />
+    <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383175856848" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383169188441" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,14 +115,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CircuitBuilder.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CircuitBuilder.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="42" selection-start="3081" selection-end="3081" vertical-scroll-proportion="0.60465115">
+            <state line="115" column="17" selection-start="4284" selection-end="4284" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#2964#2972#0" expanded="true" />
-                <element signature="e#5546#5556#0" expanded="true" />
-                <element signature="e#8797#8805#0" expanded="true" />
+                <element signature="e#1325#1353#0" expanded="true" />
+                <element signature="e#1896#1925#0" expanded="true" />
+                <element signature="e#3283#3291#0" expanded="true" />
+                <element signature="e#6295#6305#0" expanded="true" />
+                <element signature="e#9546#9554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Diode.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="82" column="48" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,17 +144,19 @@
       <file leaf-file-name="CircuitElementModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/CircuitElementModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="37" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+            <state line="28" column="63" selection-start="713" selection-end="717" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DiodeModel.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DiodeModel.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/DiodeModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="50" selection-start="484" selection-end="484" vertical-scroll-proportion="-6.64">
-              <folding />
+            <state line="27" column="53" selection-start="817" selection-end="817" vertical-scroll-proportion="0.14739884">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,15 +165,6 @@
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/CircuitElement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="34" column="60" selection-start="791" selection-end="847" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Circuit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="43" selection-start="2778" selection-end="2778" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -212,8 +218,8 @@
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/CircuitElementModel.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/C.java" />
-        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/CircuitElementModel.java" />
         <option value="$PROJECT_DIR$/trunk/Test/src/Tests.java" />
+        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/CircuitElementModel.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/DiodeModel.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java" />
       </list>
@@ -281,6 +287,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sriracha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sriracha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sriracha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sriracha" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="elements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -556,8 +638,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13929313" sideWeight="0.7898773" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2101227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27858627" sideWeight="0.6610429" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33895704" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27181208" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -642,7 +724,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/VoltageSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="24" selection-start="474" selection-end="474" vertical-scroll-proportion="-1.8606966" />
+        <state line="16" column="24" selection-start="474" selection-end="474" vertical-scroll-proportion="-1.8606966">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Test/src/Console.java">
@@ -655,13 +739,6 @@
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="78" column="30" selection-start="1893" selection-end="1903" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/CircuitElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="60" selection-start="791" selection-end="847" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -685,18 +762,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="48" selection-start="1889" selection-end="1889" vertical-scroll-proportion="3.383495">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/SubCircuitTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="42" selection-start="421" selection-end="421" vertical-scroll-proportion="0.120300755" />
+        <state line="14" column="42" selection-start="421" selection-end="421" vertical-scroll-proportion="0.120300755">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/jre/lib/rt.jar!/sun/launcher/LauncherHelper.class">
@@ -718,27 +788,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/CircuitElementModel.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/CircuitElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="37" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
+        <state line="34" column="60" selection-start="791" selection-end="847" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/DiodeModel.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="50" selection-start="484" selection-end="484" vertical-scroll-proportion="-6.64">
+        <state line="82" column="48" selection-start="1889" selection-end="1889" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/CircuitElementModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="63" selection-start="713" selection-end="717" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="42" selection-start="3081" selection-end="3081" vertical-scroll-proportion="0.60465115">
+        <state line="115" column="17" selection-start="4284" selection-end="4284" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#2964#2972#0" expanded="true" />
-            <element signature="e#5546#5556#0" expanded="true" />
-            <element signature="e#8797#8805#0" expanded="true" />
+            <element signature="e#1325#1353#0" expanded="true" />
+            <element signature="e#1896#1925#0" expanded="true" />
+            <element signature="e#3283#3291#0" expanded="true" />
+            <element signature="e#6295#6305#0" expanded="true" />
+            <element signature="e#9546#9554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/DiodeModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="53" selection-start="817" selection-end="817" vertical-scroll-proportion="0.14739884">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
