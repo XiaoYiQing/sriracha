@@ -72,57 +72,25 @@ public class CircuitBuilder
 
         String[] lines = netlist.split("\\r?\\n");
 
-        ArrayList<String> sourceLines = new ArrayList<String>();
-        ArrayList<String> dependentSourceLines = new ArrayList<String>();
         ArrayList<String> otherLines = new ArrayList<String>();
 
+        //Get circuit name
         circuit = new Circuit(lines[0]);
+
+        //First read an execute all lines starting with "." (except the final ".END")
+        //and put aside the rest of the netlist lines in a new Array.
         for (int i = 1; i < lines.length; i++)
         {
             String line = lines[i];
             String upperLine = line.toUpperCase();
+
+            //Create a new subcircuit template.
             if (upperLine.startsWith(".SUBCKT"))
             {
-                while (i < lines.length && !lines[i].toUpperCase().startsWith(".ENDS")) { i++; }
-            }
-
-            if (upperLine.startsWith("V") || upperLine.startsWith("I"))
-                sourceLines.add(line);
-            else if (upperLine.startsWith("E") || upperLine.startsWith("F")
-                    || upperLine.startsWith("G") || upperLine.startsWith("H"))
-                dependentSourceLines.add(line);
-            else
-                otherLines.add(line);
-        }
-
-        //Add all circuit element list into on single list.
-        ArrayList<String> linesList = new ArrayList<String>();
-        linesList.addAll(sourceLines);
-        linesList.addAll(dependentSourceLines);
-        linesList.addAll(otherLines);
-
-        lines = new String[linesList.size()];
-        linesList.toArray(lines);
-
-        for (int i = 0; i < lines.length; i++)
-        {
-            String line = lines[i];
-
-            if (line.equals(".END")) break;
-
-            //If String is empty, part of a comment, or an empty space, move to next String
-            if (line.length() == 0 || line.charAt(0) == '*' || Character.isWhitespace(line.charAt(0)))
-                continue;
-
-            //If String represent a normal circuit element.
-            if (line.charAt(0) != '.')
-                parseCircuitElement(circuit, lines, i);
-            else if (line.startsWith(".SUBCKT"))
-            {
-                int startingLine = i;
                 ArrayList<String> subCircuitLines = new ArrayList<String>();
-                while (!lines[i].startsWith(".ENDS"))
+                while (i < lines.length && !lines[i].toUpperCase().startsWith(".ENDS"))
                 {
+                    //If String is empty, part of a comment, or an empty space, move to next String
                     if (lines[i].length() == 0 || lines[i].charAt(0) == '*' || Character.isWhitespace(lines[i].charAt(0)))
                     {
                         i++;
@@ -134,16 +102,33 @@ public class CircuitBuilder
                     i++;
                 }
                 parseSubCircuitTemplate(subCircuitLines.toArray(new String[subCircuitLines.size()]));
-            }
-            else if (line.startsWith(".AC") || line.startsWith(".DC"))
-            {
+            }else if (line.startsWith(".AC") || line.startsWith(".DC")){
                 analysisTypes.add(parseAnalysis(line));
-            }
-            else if (line.startsWith(".PRINT"))
-            {
+            }else if (line.startsWith(".PRINT")){
                 outputFilters.add(parsePrint(line));
-            }
+            }else
+                //The normal circuit elements.
+                otherLines.add(line);
+        }
 
+        //Add all circuit element list into on single list.
+        lines = new String[otherLines.size()];
+        otherLines.toArray(lines);
+
+        for (int i = 0; i < lines.length; i++)
+        {
+            String line = lines[i];
+
+            //End of file: exit
+            if (line.equals(".END")) break;
+
+            //If String is empty, part of a comment, or an empty space, move to next String
+            if (line.length() == 0 || line.charAt(0) == '*' || Character.isWhitespace(line.charAt(0)))
+                continue;
+
+            //If String represent a normal circuit element.
+            if (line.charAt(0) != '.')
+                parseCircuitElement(circuit, lines, i);
         }
     }
 
