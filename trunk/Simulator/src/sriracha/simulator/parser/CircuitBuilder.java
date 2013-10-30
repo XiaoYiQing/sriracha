@@ -444,7 +444,8 @@ public class CircuitBuilder
                 break;
 
             case 'd':
-                createDiode(elementCollection, params[0], params[1], params[2], additionalParams);
+
+                createDiode(elementCollection, params[0], params[1], params[2], params[3]);
                 break;
 
             case 'g':
