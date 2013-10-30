@@ -116,7 +116,7 @@ public class CircuitBuilder
 
             //If String represent a normal circuit element.
             if (line.charAt(0) != '.')
-                parseCircuitElement(circuit, line);
+                parseCircuitElement(circuit, lines, i);
             else if (line.startsWith(".SUBCKT"))
             {
                 int startingLine = i;
@@ -392,7 +392,7 @@ public class CircuitBuilder
 
         //Set up the internal mapping of the circuit (iterating through internal circuit elements.)
         for (int i = 1; i < lines.length; i++)
-            parseCircuitElement(subCircuit, lines[i]);
+            parseCircuitElement(subCircuit, lines, i);
 
         //Add new addition to subcircuit template map.
         subcircuitTemplates.put(name, subCircuit);
@@ -405,16 +405,18 @@ public class CircuitBuilder
      * are detected within the netlist representation of the new circuit element
      *
      * @param elementCollection The circuit in which the element is to be added.
-     * @param line The standard circuit element in String representation.
+     * @param lines netlist in the form of array of String lines.
+     * @param index The String line where the standard circuit element in String representation
+     *              is located.
      */
-    private void parseCircuitElement(ICollectElements elementCollection, String line)
+    private void parseCircuitElement(ICollectElements elementCollection, String[] lines, int index)
     {
-        char elementType = Character.toLowerCase(line.charAt(0));
+        char elementType = Character.toLowerCase(lines[index].charAt(0));
 
-        String[] params = line.split("\\s+");
+        String[] params = lines[index].split("\\s+");
 
         if (params.length < 4)
-            throw new ParseException("Not enough parameters for a circuit element: " + line);
+            throw new ParseException("Not enough parameters for a circuit element: " + lines[index]);
 
         String[] additionalParams = Arrays.copyOfRange(params, 3, params.length);
 
