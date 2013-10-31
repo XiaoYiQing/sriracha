@@ -15,6 +15,7 @@ public class DiodeModel extends CircuitElementModel{
     private double is;
     private double vt;
 
+
     public DiodeModel(char key, String line) {
         super(key, line.split("\\s+")[1]);
 
@@ -31,9 +32,9 @@ public class DiodeModel extends CircuitElementModel{
                 String characteristicName = str.substring(0,str.indexOf("="));
                 characteristicName.toUpperCase();
                 if(characteristicName.equals("IS")){
-                    is = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
+                    is = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()));
                 }else if(characteristicName.equals("VT"))
-                    vt = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()-1));
+                    vt = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()));
             }
         }catch(StringIndexOutOfBoundsException e1){
             e1.printStackTrace();
@@ -43,5 +44,14 @@ public class DiodeModel extends CircuitElementModel{
             is = Diode.STD_IS;
             vt = Diode.STD_VT;
         }
+    }
+
+
+    public double getIs() {
+        return is;
+    }
+
+    public double getVt() {
+        return vt;
     }
 }

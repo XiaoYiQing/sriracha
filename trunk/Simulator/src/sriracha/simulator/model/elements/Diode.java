@@ -1,6 +1,7 @@
 package sriracha.simulator.model.elements;
 
 import sriracha.simulator.model.CircuitElement;
+import sriracha.simulator.model.models.DiodeModel;
 import sriracha.simulator.solver.analysis.ac.ACEquation;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
 
@@ -38,6 +39,13 @@ public class Diode extends CircuitElement{
         super(name);
         this.is = is;
         this.vt = vt;
+    }
+
+
+    public Diode(DiodeModel model){
+        super(model.getName());
+        this.is = model.getIs();
+        this.vt = model.getVt();
     }
 
     public double getCurr(double v){
@@ -84,5 +92,14 @@ public class Diode extends CircuitElement{
     public String toString()
     {
         return super.toString() + " " + is + " " + vt;
+    }
+
+
+    public double getVt() {
+        return vt;
+    }
+
+    public double getIs() {
+        return is;
     }
 }

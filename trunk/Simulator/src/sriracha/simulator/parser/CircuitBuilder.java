@@ -112,7 +112,6 @@ public class CircuitBuilder
                 CircuitElementModel newModel = parseCircuitElementModel(line);
                 if(!circuitElementModels.containsKey(newModel.getName())){
                     circuitElementModels.put(newModel.getName(), newModel);
-                    System.out.println(newModel.getName());
                 }else
                     System.out.println("Model name already in use.");
             }else if (line.startsWith(".AC") || line.startsWith(".DC")){
@@ -449,7 +448,6 @@ public class CircuitBuilder
                 break;
 
             case 'd':
-
                 createDiode(elementCollection, params[0], params[1], params[2], params[3]);
                 break;
 
@@ -480,17 +478,19 @@ public class CircuitBuilder
         }
     }
 
-    public void createDiode(ICollectElements elementCollection, String name, String node1, String node2, String... params){
+    /**
+     * Add a new diode circuit element to the circuit using the specified model "modelName"
+     *
+     * @param elementCollection The collection in which the diode is to be added
+     * @param name Name of this diode (Must be unique)
+     * @param node1 cathode of the diode, where the current is heading
+     * @param node2 anode of the diode, where the current leaves
+     * @param modelName Name of the Diode model on which the new Diode is based on (Must exists).
+     */
+    public void createDiode(ICollectElements elementCollection, String name, String node1, String node2, String modelName){
         Diode d;
-        if(params.length == 1){
-            d = new Diode(name, parseDouble(params[0]));
-        }else if(params.length == 2){
-            d = new Diode(name, parseDouble(params[0]), parseDouble(params[0]));
-        }else if(params.length==0){
-            d = new Diode(name);
-        }else
-            throw new ParseException("Invalid numbers of parameters on Diode: " + name);
 
+        d = new Diode((DiodeModel)(circuitElementModels.get(modelName)));
         int node1Index = elementCollection.assignNodeMapping(node1);
         int node2Index = elementCollection.assignNodeMapping(node2);
         d.setNodeIndices(node1Index, node2Index);
