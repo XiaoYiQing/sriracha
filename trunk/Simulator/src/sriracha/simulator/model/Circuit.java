@@ -97,13 +97,6 @@ public class Circuit implements ICollectElements {
                 e.setFirstVarIndex(index);
                 index += e.getExtraVariableCount();
             }
-            System.out.println(e);
-        }
-        Iterator it = this.nodeMap.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry newEntry = (Map.Entry)it.next();
-            System.out.println(newEntry.getKey()+ " " + newEntry.getValue());
-            it.remove();
         }
     }
 
