@@ -1,3 +1,6 @@
+import sriracha.math.MathActivator;
+import sriracha.math.interfaces.*;
+
 /**
  * Created with IntelliJ IDEA.
  * User: yiqing
@@ -9,19 +12,26 @@ public class Tests {
 
     public static void main(String[]args){
 
-        String line = "I am a manly man.";
+        MathActivator activator = MathActivator.Activator;
 
-        String[] parameters = line.split("\\s+");
+        IRealMatrix A = activator.realMatrix(3,3);
+        A.setValue(0,0,1);
+        A.setValue(1,1,1);
+        A.setValue(2,2,1);
+        System.out.println(A);
 
-        for(int i = 0; i < parameters.length; i++)
-            System.out.println(parameters[i]);
+        IComplexMatrix C = activator.complexMatrix(3,3);
+        C.setValue(0,1,activator.complex(2,1));
 
-        System.out.println("Start index:" + line.indexOf("(") + "  End index:" + line.indexOf(")"));
-        try{
-            System.out.println(line.substring(line.indexOf("("),line.indexOf(")")).split("\\s+"));
-        }catch(StringIndexOutOfBoundsException e){
-            System.out.println("Something went wrong with splitting.");
-        }
+        C.setValue(0,0,activator.complex(2,8));
+        System.out.println(C);
 
+        IMatrix D = A.plus(C);
+        System.out.println(D);
+
+        IComplexVector b = activator.complexVector(3);
+        b.setValue(1,activator.complex(1,0));
+
+        System.out.println(D.solve(b));
     }
 }

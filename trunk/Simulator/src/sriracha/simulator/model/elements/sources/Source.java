@@ -61,6 +61,4 @@ public abstract class Source extends CircuitElement
         nMinus = indices[1];
 
     }
-
-
 }
