@@ -1,5 +1,6 @@
 package sriracha.simulator.model.elements;
 
+import sriracha.math.interfaces.IComplexVector;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.models.DiodeModel;
@@ -50,8 +51,17 @@ public class Diode extends NonLinCircuitElement{
         this.vt = model.getVt();
     }
 
+    @Override
+    public double getNonLinContribution(IComplexVector f,double... v){
 
-    public double getNonLinContribution(double... v){
+        if(v.length > 1){
+            System.out.println("Wrong amount of input data for Diode.");
+            return 0;   //Allow 0 contribution.
+        }
+
+        double value = Math.exp(v[0]/vt)-1;
+        f.setValue(nodeA, activator.complex(value,0));
+        f.setValue(nodeB, activator.complex(-value,0));
 
         return is*(Math.exp(v[0]/vt)-1);
     }

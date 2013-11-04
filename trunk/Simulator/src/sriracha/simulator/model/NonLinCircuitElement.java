@@ -1,5 +1,7 @@
 package sriracha.simulator.model;
 
+import sriracha.math.MathActivator;
+import sriracha.math.interfaces.IComplexVector;
 import sriracha.simulator.solver.analysis.ac.ACEquation;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
 
@@ -12,6 +14,7 @@ import sriracha.simulator.solver.analysis.dc.DCEquation;
  */
 public abstract class NonLinCircuitElement extends CircuitElement{
 
+    protected MathActivator activator = MathActivator.Activator;
 
     /**
      * Circuit Element Constructor
@@ -22,7 +25,7 @@ public abstract class NonLinCircuitElement extends CircuitElement{
         super(name);
     }
 
-    public abstract double getNonLinContribution(double ... inputs);
+    public abstract double getNonLinContribution(IComplexVector f, double ... inputs);
 
 
 }
