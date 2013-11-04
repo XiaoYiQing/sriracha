@@ -5,6 +5,8 @@ import org.jscience.mathematics.vector.ComplexMatrix;
 import sriracha.math.interfaces.*;
 
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Collections;
 
 
 class JsComplexMatrix extends JsMatrix implements IComplexMatrix
@@ -75,6 +77,33 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
         {
             return new JsComplexVector(getMatrix().solve(((JsComplexVector) b).getVector()));
         }
+    }
+
+    @Override
+    public IComplex getMax() {
+        ComplexMatrix myMat = (ComplexMatrix) matrix;
+        int m = myMat.getNumberOfRows();
+        int n = myMat.getNumberOfColumns();
+        double temp = 0;
+
+        double max = 0;
+        int maxRow = 0;
+        int maxCol = 0;
+
+        for(int i = 0; i < m; i++){
+         for(int j = 0; j < n; j++){
+             temp = myMat.get(i,j).magnitude();
+             if(temp > max){
+                 max = temp;
+                 maxRow = i;
+                 maxCol = j;
+             }
+         }
+        }
+
+        return new JsComplex(myMat.get(maxRow, maxCol).getReal(),
+                myMat.get(maxRow, maxCol).getImaginary()) {
+        };
     }
 
     @Override

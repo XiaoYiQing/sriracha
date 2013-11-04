@@ -1,6 +1,6 @@
 package sriracha.math.interfaces;
 
-public interface IComplexMatrix extends IMatrix {
+public interface IComplexMatrix extends IMatrix{
 
     public IComplex getValue(int i, int j);
 
@@ -10,4 +10,6 @@ public interface IComplexMatrix extends IMatrix {
 
     @Override
     public IComplexVector solve(IVector vector);
+
+    public IComplex getMax();
 }
