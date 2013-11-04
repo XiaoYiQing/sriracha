@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sriracha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +34,7 @@
     <file path="/DCAnalysis.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383080665914" ignored="false" />
     <file path="/ACEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383522240744" ignored="false" />
     <file path="/Console.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383082071469" ignored="false" />
-    <file path="/Diode.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383526297372" ignored="false" />
+    <file path="/Diode.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383526377669" ignored="false" />
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383175222401" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383178229740" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383182635426" ignored="false" />
@@ -179,7 +178,7 @@
       <file leaf-file-name="Diode.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="39" selection-start="1280" selection-end="1301" vertical-scroll-proportion="0.20094563">
+            <state line="59" column="32" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.56264776">
               <folding />
             </state>
           </provider>
@@ -1070,7 +1069,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="39" selection-start="1280" selection-end="1301" vertical-scroll-proportion="0.20094563">
+        <state line="59" column="32" selection-start="1490" selection-end="1490" vertical-scroll-proportion="0.56264776">
           <folding />
         </state>
       </provider>

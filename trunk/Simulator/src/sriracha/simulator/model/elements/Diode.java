@@ -60,8 +60,8 @@ public class Diode extends NonLinCircuitElement{
         }
 
         double value = Math.exp(v[0]/vt)-1;
-        f.setValue(nodeA, activator.complex(value,0));
-        f.setValue(nodeB, activator.complex(-value,0));
+        f.addValue(nodeA, activator.complex(value,0));
+        f.addValue(nodeB, activator.complex(-value,0));
 
         return is*(Math.exp(v[0]/vt)-1);
     }
