@@ -110,12 +110,12 @@ public class DCNonLinEquation {
      */
     IComplexVector solve()
     {
-        /*//Erase
+        //Erase
         f = activator.complexVector(f.getDimension());
 
         do{
 
-        }while()*/
+        }while(f.getMax().getMag()>1e-15);
 
         return null;
     }

@@ -13,6 +13,12 @@ public interface IComplex {
 
     public double getReal();
 
+    /**
+     * Get the magnitude of this IComplex number.
+     * @return
+     */
+    public double getMag();
+
     public void setReal(double real);
 
     IComplex plus(IComplex d);

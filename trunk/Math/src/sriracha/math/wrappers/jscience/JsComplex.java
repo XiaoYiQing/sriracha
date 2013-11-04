@@ -37,6 +37,11 @@ class JsComplex implements IComplex {
     }
 
     @Override
+    public double getMag(){
+        return Math.pow(value.getReal()*value.getReal() + value.getImaginary()*value.getImaginary(),1/2);
+    }
+
+    @Override
     public void setReal(double real) {
         value = Complex.valueOf(real, value.getImaginary());
     }
@@ -61,6 +66,11 @@ class JsComplex implements IComplex {
         return value.toString();    //To change body of overridden methods use File | Settings | File Templates.
     }
 
+    /**
+     * Make a Complex object out of this instance of IComplex object.
+     * @param complex
+     * @return
+     */
     static Complex make(IComplex complex) {
         return Complex.valueOf(complex.getReal(), complex.getImag());
     }
