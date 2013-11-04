@@ -32,10 +32,13 @@ public class Tests {
         System.out.println(D);
 
         IComplexVector b = activator.complexVector(3);
-        b.setValue(1,activator.complex(1,0));
+        b.setValue(0,activator.complex(4,9));
+        b.setValue(1,activator.complex(9,0));
+        b.setValue(2,activator.complex(1,4));
 
         System.out.println(D.solve(b));
 
         System.out.println("Max value in C is: " + C.getMax());
+        System.out.println("Max value in b is: " + b.getMax());
     }
 }

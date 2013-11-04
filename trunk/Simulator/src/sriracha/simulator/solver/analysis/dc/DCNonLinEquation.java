@@ -110,8 +110,12 @@ public class DCNonLinEquation {
      */
     IComplexVector solve()
     {
+        /*//Erase
+        f = activator.complexVector(f.getDimension());
 
+        do{
 
+        }while()*/
 
         return null;
     }

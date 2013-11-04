@@ -82,14 +82,17 @@ class JsComplexVector extends JsVector implements IComplexVector
         ComplexVector myVec = (ComplexVector)vector;
         int d = myVec.getDimension();
 
+
         double temp = 0;
         double max = 0;
         int maxIndex = 0;
 
         for(int i = 0; i < d; i++){
             temp = myVec.get(i).magnitude();
+            System.out.println("temp: " + temp);
             if(temp > max){
                 max = temp;
+                maxIndex = i;
             }
         }
 
