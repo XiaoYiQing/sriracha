@@ -78,6 +78,7 @@ public class ACEquation
 
     /**
      * Apply complex matrix stamp value to the complex matrix equation.
+     * Used by circuit elements.
      * @param i x matrix coordinate
      * @param j y matrix coordinate
      * @param value
