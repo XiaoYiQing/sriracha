@@ -25,7 +25,13 @@ public abstract class NonLinCircuitElement extends CircuitElement{
         super(name);
     }
 
-    public abstract double getNonLinContribution(IComplexVector f, double ... inputs);
+    /**
+     * Method add the contribution of this instance of non-linear circuit element
+     * into the f vector.
+     * @param f vector(array) in which the contribution is added.
+     * @param inputs the necessary data required to compute the contribution.
+     */
+    public abstract void getNonLinContribution(IComplexVector f, double ... inputs);
 
 
 }

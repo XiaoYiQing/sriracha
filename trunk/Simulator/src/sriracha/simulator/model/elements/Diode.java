@@ -52,18 +52,15 @@ public class Diode extends NonLinCircuitElement{
     }
 
     @Override
-    public double getNonLinContribution(IComplexVector f,double... v){
+    public void getNonLinContribution(IComplexVector f, double... inputs){
 
-        if(v.length > 1){
+        if(inputs.length > 1){
             System.out.println("Wrong amount of input data for Diode.");
-            return 0;   //Allow 0 contribution.
         }
 
-        double value = Math.exp(v[0]/vt)-1;
+        double value = Math.exp(inputs[0]/vt)-1;
         f.addValue(nodeA, activator.complex(value,0));
         f.addValue(nodeB, activator.complex(-value,0));
-
-        return is*(Math.exp(v[0]/vt)-1);
     }
 
     @Override
