@@ -66,7 +66,7 @@ class JsComplexVector extends JsVector implements IComplexVector
     }
 
     @Override
-    ComplexVector getVector()
+    public ComplexVector getVector()
     {
         return (ComplexVector) vector;
     }

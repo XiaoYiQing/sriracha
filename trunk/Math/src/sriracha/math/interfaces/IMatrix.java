@@ -11,6 +11,7 @@ public interface IMatrix {
     public IMatrix times(IMatrix m);
 
     public IMatrix times(double n);
+    public IVector times(IVector v);
 
     public IVector solve(IVector b);
 

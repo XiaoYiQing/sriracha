@@ -101,17 +101,17 @@ abstract class JsMatrix implements IMatrix
         return null;
     }
 
-    public IMatrix times(IVector m)
+    public IVector times(IVector v)
     {
         if (this instanceof JsMatrix)
         {
 
             if (this instanceof JsComplexMatrix || this instanceof JsComplexMatrix)
             {
-                return (IComplexMatrix)this.matrix.times(m.getVector());
+                return new JsComplexVector(this.matrix.times(v.getVector()));
             } else
             {
-                return new JsRealMatrix(Float64Matrix.valueOf(matrix.times(((JsMatrix) m).matrix)));
+                return new JsRealVector(this.matrix.times(v.getVector()));
             }
         }
 

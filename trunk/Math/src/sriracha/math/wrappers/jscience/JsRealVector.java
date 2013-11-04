@@ -98,7 +98,7 @@ class JsRealVector extends JsVector implements IRealVector
         return new JsRealVector(Float64Vector.valueOf(vector.copy()));
     }
 
-    Float64Vector getVector()
+    public Float64Vector getVector()
     {
         return (Float64Vector) vector;
     }

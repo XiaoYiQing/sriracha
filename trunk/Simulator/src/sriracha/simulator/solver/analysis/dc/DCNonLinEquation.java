@@ -123,7 +123,7 @@ public class DCNonLinEquation {
 
         do{
             G1 = (IComplexMatrix)C.plus(G.times(1/h));
-            //b1 = C.times(x);
+            b1 = (IComplexVector)C.times(x);
 
 
 
@@ -131,7 +131,4 @@ public class DCNonLinEquation {
 
         return null;
     }
-
-
-
 }
