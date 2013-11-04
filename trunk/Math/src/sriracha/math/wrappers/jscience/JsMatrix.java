@@ -3,9 +3,14 @@ package sriracha.math.wrappers.jscience;
 import org.jscience.mathematics.number.Complex;
 import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.ComplexMatrix;
+import org.jscience.mathematics.vector.ComplexVector;
 import org.jscience.mathematics.vector.Float64Matrix;
 import org.jscience.mathematics.vector.Matrix;
+import sriracha.math.interfaces.IComplexMatrix;
 import sriracha.math.interfaces.IMatrix;
+import sriracha.math.interfaces.IVector;
+
+import java.util.List;
 
 /**
  * Classes inheriting JsMatrix class are wrapper class
@@ -87,6 +92,23 @@ abstract class JsMatrix implements IMatrix
             if (m instanceof JsComplexMatrix || this instanceof JsComplexMatrix)
             {
                 return new JsComplexMatrix(ComplexMatrix.valueOf(matrix.times(((JsMatrix) m).matrix)));
+            } else
+            {
+                return new JsRealMatrix(Float64Matrix.valueOf(matrix.times(((JsMatrix) m).matrix)));
+            }
+        }
+
+        return null;
+    }
+
+    public IMatrix times(IVector m)
+    {
+        if (this instanceof JsMatrix)
+        {
+
+            if (this instanceof JsComplexMatrix || this instanceof JsComplexMatrix)
+            {
+                return (IComplexMatrix)this.matrix.times(m.getVector());
             } else
             {
                 return new JsRealMatrix(Float64Matrix.valueOf(matrix.times(((JsMatrix) m).matrix)));

@@ -110,10 +110,22 @@ public class DCNonLinEquation {
      */
     IComplexVector solve()
     {
-        //Erase
-        f = activator.complexVector(f.getDimension());
+        int n = f.getDimension();
+        f = activator.complexVector(n);
+
+        double h = STD_H;
+
+        IComplexMatrix G1;
+        IComplexVector b1;
+
+        //Initial guess is a all 0 vector.
+        IComplexVector x = activator.complexVector(n);
 
         do{
+            G1 = (IComplexMatrix)C.plus(G.times(1/h));
+            //b1 = C.times(x);
+
+
 
         }while(f.getMax().getMag()>1e-15);
 

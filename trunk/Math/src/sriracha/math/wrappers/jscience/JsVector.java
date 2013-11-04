@@ -20,7 +20,7 @@ abstract class JsVector implements IVector
     {
     }
 
-    Vector getVector()
+    public Vector getVector()
     {
         return vector;
     }
