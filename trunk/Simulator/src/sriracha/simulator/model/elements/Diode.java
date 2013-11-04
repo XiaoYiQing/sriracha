@@ -1,6 +1,7 @@
 package sriracha.simulator.model.elements;
 
 import sriracha.simulator.model.CircuitElement;
+import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.models.DiodeModel;
 import sriracha.simulator.solver.analysis.ac.ACEquation;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
@@ -8,7 +9,7 @@ import sriracha.simulator.solver.analysis.dc.DCEquation;
 /**
  * Diode circuit element using the equation: I = Is*(exp(V/Vt)-1)
  */
-public class Diode extends CircuitElement{
+public class Diode extends NonLinCircuitElement{
 
     /**
      * Standard: 25mV
@@ -29,6 +30,7 @@ public class Diode extends CircuitElement{
         vt = STD_VT;
     }
 
+
     public Diode(String name, double Is){
         super(name);
         this.is = Is;
@@ -48,8 +50,10 @@ public class Diode extends CircuitElement{
         this.vt = model.getVt();
     }
 
-    public double getCurr(double v){
-        return is*(Math.exp(v/vt)-1);
+
+    public double getNonLinContribution(double... v){
+
+        return is*(Math.exp(v[0]/vt)-1);
     }
 
     @Override

@@ -114,7 +114,6 @@ public class DCNonLinEquation {
 
 
 
-
         return null;
     }
 
