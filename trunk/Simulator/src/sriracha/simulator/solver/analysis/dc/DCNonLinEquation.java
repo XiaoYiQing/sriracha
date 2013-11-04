@@ -7,8 +7,10 @@ import sriracha.math.interfaces.IComplexVector;
 import sriracha.math.interfaces.IRealMatrix;
 import sriracha.simulator.Options;
 import sriracha.simulator.model.CircuitElement;
+import sriracha.simulator.model.NonLinCircuitElement;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class DCNonLinEquation {
 
     public static final double STD_H = 1e-9;
+    public static final double STD_THRESHOLD = 1e-9;
 
     /**
      * Factory object for the Math module's objects.
@@ -114,17 +117,28 @@ public class DCNonLinEquation {
         f = activator.complexVector(n);
 
         double h = STD_H;
+        double deltaX;
 
         IComplexMatrix G1;
         IComplexVector b1;
 
         //Initial guess is a all 0 vector.
         IComplexVector x = activator.complexVector(n);
+        NonLinCircuitElement nextElem;
 
         do{
+            //G1 = G + C/h
             G1 = (IComplexMatrix)C.plus(G.times(1/h));
-            b1 = (IComplexVector)C.times(x);
+            //b1 = (1/h)*C*x + b
+            b1 = (IComplexVector)(((C.times(x)).times(1/h)).plus(b));
+            deltaX = 1;
 
+            while(deltaX > STD_THRESHOLD){
+                Iterator iter = nonLinearElem.iterator();
+                while(iter.hasNext()){
+                    nextElem = (NonLinCircuitElement)iter.next();
+                }
+            }
 
 
         }while(f.getMax().getMag()>1e-15);

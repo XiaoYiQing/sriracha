@@ -58,7 +58,7 @@ public class Diode extends NonLinCircuitElement{
             System.out.println("Wrong amount of input data for Diode.");
         }
 
-        double value = Math.exp(inputs[0]/vt)-1;
+        double value = is*(Math.exp(inputs[0]/vt)-1);
         f.addValue(nodeA, activator.complex(value,0));
         f.addValue(nodeB, activator.complex(-value,0));
     }
