@@ -78,6 +78,27 @@ class JsComplexVector extends JsVector implements IComplexVector
     }
 
     @Override
+    public IComplex getMax(){
+        ComplexVector myVec = (ComplexVector)vector;
+        int d = myVec.getDimension();
+
+        double temp = 0;
+        double max = 0;
+        int maxIndex = 0;
+
+        for(int i = 0; i < d; i++){
+            temp = myVec.get(i).magnitude();
+            if(temp > max){
+                max = temp;
+            }
+        }
+
+        return new JsComplex(myVec.get(maxIndex).getReal(),
+                myVec.get(maxIndex).getImaginary()) {
+        };
+    }
+
+    @Override
     public void setValue(int i, IComplex value)
     {
         getVector().set(i, JsComplex.make(value));

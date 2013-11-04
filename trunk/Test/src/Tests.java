@@ -22,8 +22,10 @@ public class Tests {
 
         IComplexMatrix C = activator.complexMatrix(3,3);
         C.setValue(0,1,activator.complex(2,1));
-
         C.setValue(0,0,activator.complex(2,8));
+        C.setValue(2,2,activator.complex(5,2));
+        C.setValue(1,0,activator.complex(1,9));
+
         System.out.println(C);
 
         IMatrix D = A.plus(C);
@@ -33,5 +35,7 @@ public class Tests {
         b.setValue(1,activator.complex(1,0));
 
         System.out.println(D.solve(b));
+
+        System.out.println("Max value in C is: " + C.getMax());
     }
 }
