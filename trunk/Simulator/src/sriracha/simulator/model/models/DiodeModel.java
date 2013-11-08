@@ -3,6 +3,8 @@ package sriracha.simulator.model.models;
 import sriracha.simulator.model.elements.Diode;
 import sriracha.simulator.parser.CircuitBuilder;
 
+import java.util.Locale;
+
 /**
  * Created with IntelliJ IDEA.
  * User: yiqing
@@ -30,7 +32,7 @@ public class DiodeModel extends CircuitElementModel{
 
             for(String str: parameters){
                 String characteristicName = str.substring(0,str.indexOf("="));
-                characteristicName.toUpperCase();
+                characteristicName = characteristicName.toUpperCase(Locale.ENGLISH);
                 if(characteristicName.equals("IS")){
                     is = CircuitBuilder.parseDouble(str.substring(str.indexOf("=")+1, str.length()));
                 }else if(characteristicName.equals("VT"))

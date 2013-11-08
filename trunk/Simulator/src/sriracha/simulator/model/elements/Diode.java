@@ -21,7 +21,14 @@ public class Diode extends NonLinCircuitElement{
      */
     public static final double STD_IS = 0.00000000000001;
 
-    protected int nodeA, nodeB;
+    /**
+     * Diode's anode
+     */
+    protected int nodeA;
+    /**
+     * Diode's cathode
+     */
+    protected int nodeB;
     private double is;
     private double vt;
 
@@ -52,13 +59,9 @@ public class Diode extends NonLinCircuitElement{
     }
 
     @Override
-    public void getNonLinContribution(IComplexVector f, double... inputs){
+    public void getNonLinContribution(IComplexVector f, IComplexVector x){
 
-        if(inputs.length > 1){
-            System.out.println("Wrong amount of input data for Diode.");
-        }
-
-        double value = is*(Math.exp(inputs[0]/vt)-1);
+        double value = is*(Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt)-1);
         f.addValue(nodeA, activator.complex(value,0));
         f.addValue(nodeB, activator.complex(-value,0));
     }

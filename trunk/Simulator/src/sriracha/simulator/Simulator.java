@@ -84,6 +84,7 @@ public class Simulator implements ISimulator
         {
             System.out.println(circuit);
         }
+        System.out.println(circuit);
         return saveAll();
 
     }
