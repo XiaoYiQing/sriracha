@@ -490,7 +490,17 @@ public class CircuitBuilder
     public void createDiode(ICollectElements elementCollection, String name, String node1, String node2, String modelName){
         Diode d;
 
-        d = new Diode((DiodeModel)(circuitElementModels.get(modelName)));
+        CircuitElementModel myModel = circuitElementModels.get(modelName);
+
+
+        if(myModel.getKey() == 'D'){
+            d = new Diode(name, (DiodeModel)(myModel));
+        }else{
+            System.out.println("Warning, non diode MODEL specified for a diode element.\n"+
+                "Standard diode parameters applied.");
+            d = new Diode(name);
+        }
+
         int node1Index = elementCollection.assignNodeMapping(node1);
         int node2Index = elementCollection.assignNodeMapping(node2);
         d.setNodeIndices(node1Index, node2Index);

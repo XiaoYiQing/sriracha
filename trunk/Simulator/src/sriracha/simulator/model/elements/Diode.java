@@ -45,8 +45,8 @@ public class Diode extends NonLinCircuitElement{
     }
 
 
-    public Diode(DiodeModel model){
-        super(model.getName());
+    public Diode(String name, DiodeModel model){
+        super(name);
         this.is = model.getIs();
         this.vt = model.getVt();
     }

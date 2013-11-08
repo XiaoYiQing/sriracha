@@ -9,7 +9,7 @@ public abstract class CircuitElementModel {
     private String name;
 
     public CircuitElementModel(char key, String name){
-        this.key = key;
+        this.key = Character.toUpperCase(key);
         this.name = name;
     }
 
