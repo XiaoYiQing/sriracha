@@ -40,7 +40,7 @@ public class DCNonLinEquation {
 
     private IComplexVector f;
 
-    private ArrayList<CircuitElement> nonLinearElem;
+    private ArrayList<NonLinCircuitElement> nonLinearElem;
     /**
      * private constructor creating a new DCNonLinEquation object with matrix equation
      * size indicated by circuitNodeCount.
@@ -56,10 +56,10 @@ public class DCNonLinEquation {
 
         //Note: the array list initiate with a guessed size of amount of
         //non-linear circuit element. (guessing it as number of nodes)
-        nonLinearElem = new ArrayList<CircuitElement>(circuitNodeCount);
+        nonLinearElem = new ArrayList<NonLinCircuitElement>(circuitNodeCount);
     }
 
-    public void applyNonLinearCircuitElem(CircuitElement input){
+    public void applyNonLinearCircuitElem(NonLinCircuitElement input){
         nonLinearElem.add(input);
     }
 
@@ -113,6 +113,7 @@ public class DCNonLinEquation {
      */
     IComplexVector solve()
     {
+        //create a new f vector
         int n = f.getDimension();
         f = activator.complexVector(n);
 
@@ -143,6 +144,30 @@ public class DCNonLinEquation {
 
         }while(f.getMax().getMag()>1e-15);
 
+        return null;
+    }
+
+    //The following is a temporary method to build up Newton Iteration solver.
+
+    /**
+     * A Newton Raphson iteration method which is taylored to solve
+     * the non-linear case.
+     * @param G actually: (G+C/h)
+     * @param b actually: (C/h*x(n) + b(n+1))
+     * @return
+     */
+    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b)
+    {
+        int n = b.getDimension();
+        //initial guess
+        IComplexVector x0 = activator.complexVector(n);
+
+        IComplexVector f0 = activator.complexVector(n);
+        IComplexMatrix df0 = activator.complexMatrix(n,n);
+
+        for(int i = 0; i < nonLinearElem.size(); i++){
+            nonLinearElem.get(i).getNonLinContribution(f0,x0);
+        }
         return null;
     }
 }
