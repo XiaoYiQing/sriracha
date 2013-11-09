@@ -1,6 +1,7 @@
 package sriracha.simulator.model;
 
 import sriracha.math.MathActivator;
+import sriracha.math.interfaces.IComplexMatrix;
 import sriracha.math.interfaces.IComplexVector;
 import sriracha.simulator.solver.analysis.ac.ACEquation;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
@@ -32,5 +33,6 @@ public abstract class NonLinCircuitElement extends CircuitElement{
      */
     public abstract void getNonLinContribution(IComplexVector f, IComplexVector x);
 
+    public abstract void getJacobian(IComplexVector x, IComplexMatrix J);
 
 }

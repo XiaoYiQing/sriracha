@@ -1,5 +1,7 @@
 package sriracha.simulator.model.elements;
 
+import sriracha.math.interfaces.IComplex;
+import sriracha.math.interfaces.IComplexMatrix;
 import sriracha.math.interfaces.IComplexVector;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
@@ -64,6 +66,16 @@ public class Diode extends NonLinCircuitElement{
         double value = is*(Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt)-1);
         f.addValue(nodeA, activator.complex(value,0));
         f.addValue(nodeB, activator.complex(-value,0));
+    }
+
+    @Override
+    public void getJacobian(IComplexVector x, IComplexMatrix J){
+        double value = is/vt*Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt);
+
+        IComplex cValue = activator.complex(value, 0);
+
+        //J.setValue(nodeA, nodeA, cValue);
+        //J.setValue(node)
     }
 
     @Override
