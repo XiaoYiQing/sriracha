@@ -69,7 +69,7 @@ public class Diode extends NonLinCircuitElement{
     }
 
     @Override
-    public void getJacobian(IComplexVector x, IComplexMatrix J){
+    public void getHessianContribution(IComplexMatrix J, IComplexVector x){
         double value = is/vt*Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt);
 
         J.addValue(nodeA, nodeA, value, 0);

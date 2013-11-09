@@ -27,12 +27,18 @@ public abstract class NonLinCircuitElement extends CircuitElement{
     }
 
     /**
-     * Method add the contribution of this instance of non-linear circuit element
+     * Method adds the contribution of this instance of non-linear circuit element
      * into the f vector.
      * @param f vector(array) in which the contribution is added.
      */
     public abstract void getNonLinContribution(IComplexVector f, IComplexVector x);
 
-    public abstract void getJacobian(IComplexVector x, IComplexMatrix J);
+    /**
+     * Method adds the contribution of this instance of non-linear circuit element
+     * into the Jacobian matrix for the purpose of performing Newton Raphson.
+     * @param x node voltage vector.
+     * @param J the Jacobian matrix in which the contribution is to be added.
+     */
+    public abstract void getHessianContribution(IComplexMatrix J, IComplexVector x);
 
 }

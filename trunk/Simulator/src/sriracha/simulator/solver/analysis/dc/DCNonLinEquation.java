@@ -158,6 +158,13 @@ public class DCNonLinEquation {
      */
     public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b)
     {
+
+        /*
+        * phi(x) = Gx + f(x) - b
+        * d(phi(x))/dx = G + df(x)/dx
+        *
+        * */
+
         int n = b.getDimension();
         //initial guess
         IComplexVector x0 = activator.complexVector(n);
@@ -167,7 +174,9 @@ public class DCNonLinEquation {
 
         for(int i = 0; i < nonLinearElem.size(); i++){
             nonLinearElem.get(i).getNonLinContribution(f0,x0);
+            nonLinearElem.get(i).getHessianContribution(df0,x0);
         }
+
         return null;
     }
 }
