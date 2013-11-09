@@ -47,13 +47,32 @@ class JsComplex implements IComplex {
     }
 
     @Override
+    public boolean isComplex()
+    {
+        return value.getImaginary() != 0;
+    }
+
+    @Override
     public IComplex plus(IComplex d) {
         return new JsComplex(d.getReal() + getReal(), d.getImag() + getImag());
     }
 
     @Override
+    public IComplex plus(double real, double img)
+    {
+        return new JsComplex(value.plus(Complex.valueOf(real, img)));
+    }
+
+
+    @Override
     public IComplex minus(IComplex d) {
         return new JsComplex(getReal() - d.getReal(), getImag() - d.getImag());
+    }
+
+    @Override
+    public IComplex minus(double real, double img)
+    {
+        return new JsComplex(value.minus(Complex.valueOf(real, img)));
     }
 
     @Override
