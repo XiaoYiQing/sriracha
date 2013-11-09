@@ -26,4 +26,9 @@ public interface IComplexMatrix extends IMatrix{
      * Set all values in the matrix to 0.
      */
     public void clear();
+
+    /**
+     * Invert this matrix instance.
+     */
+    public void inverse();
 }

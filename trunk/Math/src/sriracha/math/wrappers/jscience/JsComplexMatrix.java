@@ -155,5 +155,9 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
         return sb.toString();
     }
 
+    @Override
+    public void inverse(){
+        matrix = matrix.inverse();
+    }
 
 }

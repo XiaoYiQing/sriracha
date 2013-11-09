@@ -177,9 +177,13 @@ public class DCNonLinEquation {
             nonLinearElem.get(i).getHessianContribution(df0,x0);
         }
 
+        //phi(x) = Gx + f(x) - b
         IComplexVector phi = (IComplexVector)((G.times(x0)).plus(f0)).minus(b);
+        //d(phi(x))/dx = G + df(x)/dx
         IComplexMatrix J = (IComplexMatrix)G.plus(df0);
+        J.inverse();
 
+        IComplexVector deltaX = (IComplexVector)J.times(phi).times((-1));
 
         return null;
     }
