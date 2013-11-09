@@ -127,6 +127,13 @@ class JsComplexVector extends JsVector implements IComplexVector
         getVector().set(i, getVector().get(i).plus(Complex.valueOf(real, complex)));
     }
 
+    @Override
+    public void clear()
+    {
+        for(int i = 0; i < vector.getDimension(); i++){
+            vector.set(i, Complex.valueOf(0,0));
+        }
+    }
 
     @Override
     public String toString()
@@ -149,4 +156,6 @@ class JsComplexVector extends JsVector implements IComplexVector
     {
         return new JsComplexVector(ComplexVector.valueOf(vector.copy()));
     }
+
+
 }

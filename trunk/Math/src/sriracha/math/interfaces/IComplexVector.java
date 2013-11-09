@@ -18,4 +18,9 @@ public interface IComplexVector extends IVector {
      * @return Complex value with the highest magnitude.
      */
     public IComplex getMax();
+
+    /**
+     * Set all values in the vector to 0.
+     */
+    public void clear();
 }

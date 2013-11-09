@@ -21,4 +21,9 @@ public interface IComplexMatrix extends IMatrix{
      * @return Complex value with the highest magnitude.
      */
     public IComplex getMax();
+
+    /**
+     * Set all values in the matrix to 0.
+     */
+    public void clear();
 }

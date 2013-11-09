@@ -117,6 +117,17 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
     }
 
     @Override
+    public void clear()
+    {
+        for(int i = 0; i < matrix.getNumberOfRows(); i++){
+            for(int j = 0; j < matrix.getNumberOfRows(); j++){
+                matrix.set(i,j,Complex.valueOf(0,0));
+            }
+        }
+    }
+
+
+    @Override
     public IMatrix clone()
     {
         return new JsComplexMatrix(getMatrix().copy());
