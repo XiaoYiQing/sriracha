@@ -154,9 +154,10 @@ public class DCNonLinEquation {
      * the non-linear case.
      * @param G actually: (G+C/h)
      * @param b actually: (C/h*x(n) + b(n+1))
+     * @param x0 initial guess of node voltages
      * @return
      */
-    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b)
+    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b, IComplexVector x0)
     {
 
         /*
@@ -167,7 +168,6 @@ public class DCNonLinEquation {
 
         int n = b.getDimension();
         //initial guess
-        IComplexVector x0 = activator.complexVector(n);
 
         IComplexVector f0 = activator.complexVector(n);
         IComplexMatrix df0 = activator.complexMatrix(n,n);
@@ -185,6 +185,10 @@ public class DCNonLinEquation {
 
         IComplexVector deltaX = (IComplexVector)J.times(phi).times((-1));
 
-        return null;
+        if(deltaX.getMax().getMag() > STD_THRESHOLD){
+            return myNewtonRap(G, b, x0);
+        }else{
+            return (IComplexVector)x0.plus(deltaX);
+        }
     }
 }
