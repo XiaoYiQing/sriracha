@@ -72,10 +72,11 @@ public class Diode extends NonLinCircuitElement{
     public void getJacobian(IComplexVector x, IComplexMatrix J){
         double value = is/vt*Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt);
 
-        IComplex cValue = activator.complex(value, 0);
+        //IComplex cValue = activator.complex(value, 0);
+        //IComplex cValue = activator.complex(value, 0);
 
-        //J.setValue(nodeA, nodeA, cValue);
-        //J.setValue(node)
+        //J.addValue(nodeA, nodeA, cValue);
+        //J.addValue(nodeA, nodeB, -cValue)
     }
 
     @Override

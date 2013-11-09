@@ -56,7 +56,11 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
     public void setValue(int i, int j, IComplex value)
     {
         matrix.set(i, j, JsComplex.make(value));
+    }
 
+    @Override
+    public void setValue(int i, int j, double real, double complex){
+        matrix.set(i,j, Complex.valueOf(real, complex));
     }
 
     @Override
@@ -64,6 +68,12 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
     {
         Complex previousValue = (Complex) matrix.get(i, j);
         matrix.set(i, j, previousValue.plus(JsComplex.make(value)));
+    }
+
+    @Override
+    public void addValue(int i, int j, double real, double complex)
+    {
+        matrix.set(i, j, ((Complex)matrix.get(i,j)).plus(Complex.valueOf(real, complex)));
     }
 
     @Override

@@ -6,7 +6,11 @@ public interface IComplexMatrix extends IMatrix{
 
     public void setValue(int i, int j, IComplex value);
 
+    public void setValue(int i, int j, double real, double complex);
+
     public void addValue(int i, int j, IComplex value);
+
+    public void addValue(int i, int j, double real, double complex);
 
     @Override
     public IComplexVector solve(IVector vector);

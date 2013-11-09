@@ -108,11 +108,25 @@ class JsComplexVector extends JsVector implements IComplexVector
     }
 
     @Override
+    public void setValue(int i, double real, double complex)
+    {
+        getVector().set(i, Complex.valueOf(real, complex));
+    }
+
+
+    @Override
     public void addValue(int i, IComplex value)
     {
 
         getVector().set(i, getVector().get(i).plus(JsComplex.make(value)));
     }
+
+    @Override
+    public void addValue(int i, double real, double complex)
+    {
+        getVector().set(i, getVector().get(i).plus(Complex.valueOf(real, complex)));
+    }
+
 
     @Override
     public String toString()

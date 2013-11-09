@@ -6,7 +6,11 @@ public interface IComplexVector extends IVector {
 
     public void setValue(int i, IComplex value);
 
+    public void setValue(int i, double real, double complex);
+
     public void addValue(int i, IComplex value);
+
+    public void addValue(int i, double real, double complex);
 
     /**
      * Get the vector's maximum complex value according to magnitude of the
