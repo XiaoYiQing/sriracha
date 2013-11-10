@@ -108,19 +108,20 @@ public class CircuitBuilder
                     i++;
                 }
                 parseSubCircuitTemplate(subCircuitLines.toArray(new String[subCircuitLines.size()]));
-            }else if(line.startsWith(".MODEL")){
-                CircuitElementModel newModel = parseCircuitElementModel(line);
+            }else if(upperLine.startsWith(".MODEL")){
+                CircuitElementModel newModel = parseCircuitElementModel(upperLine);
                 if(!circuitElementModels.containsKey(newModel.getName())){
                     circuitElementModels.put(newModel.getName(), newModel);
                 }else
                     System.out.println("Model name already in use.");
-            }else if (line.startsWith(".AC") || line.startsWith(".DC")){
-                analysisTypes.add(parseAnalysis(line));
-            }else if (line.startsWith(".PRINT")){
-                outputFilters.add(parsePrint(line));
+            }else if (upperLine.startsWith(".AC") || upperLine.startsWith(".DC")){
+                System.out.println("Parse!!");
+                analysisTypes.add(parseAnalysis(upperLine));
+            }else if (upperLine.startsWith(".PRINT")){
+                outputFilters.add(parsePrint(upperLine));
             }else
                 //The normal circuit elements.
-                otherLines.add(line);
+                otherLines.add(upperLine);
         }
 
         //Add all circuit element list into on single list.
@@ -148,6 +149,8 @@ public class CircuitBuilder
     {
         String[] params = tokenizeLine(line);
 
+        System.out.println("in parsePrint: \n" + line);
+
         if (params.length < 3)
             throw new ParseException("Not enough parameters for .PRINT: " + line);
 
@@ -171,6 +174,19 @@ public class CircuitBuilder
             {
                 NodeDataFormat dataFormat = StringToOutputType(params[i].substring(1, params[i].indexOf('(')), line);
                 String[] nodeList = parseBracketContents(params[i].substring(params[i].indexOf('('), params[i].length()));
+
+                for(int m = 0; m < nodeList.length; m++){
+                    System.out.print(nodeList[m] + " ");
+                }
+                System.out.println("\nnodeList above!");
+                HashMap<String, Integer> myTemp = circuit.getNodeMap();
+                Iterator it = myTemp.entrySet().iterator();
+                while (it.hasNext()) {
+                    Map.Entry pairs = (Map.Entry)it.next();
+                    System.out.println(pairs.getKey() + " = " + pairs.getValue());
+                    it.remove(); // avoids a ConcurrentModificationException
+                }
+
 
                 for (String node : nodeList)
                     if (node.length() == 0)

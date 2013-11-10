@@ -22,6 +22,10 @@ public class Circuit implements ICollectElements {
      */
     private HashMap<String, Integer> nodeMap;
 
+    public HashMap<String, Integer> getNodeMap() {
+        return nodeMap;
+    }
+
     /**
      * Circuit constructor.
      * @param name - first line of Netlist
