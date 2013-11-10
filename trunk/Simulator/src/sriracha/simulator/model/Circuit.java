@@ -57,6 +57,7 @@ public class Circuit implements ICollectElements {
      * @return matrix index
      */
     public int getNodeIndex(String nodeName) {
+
         return nodeMap.get(nodeName);
     }
 

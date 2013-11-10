@@ -114,11 +114,6 @@ public class CircuitBuilder
                     circuitElementModels.put(newModel.getName(), newModel);
                 }else
                     System.out.println("Model name already in use.");
-            }else if (upperLine.startsWith(".AC") || upperLine.startsWith(".DC")){
-                System.out.println("Parse!!");
-                analysisTypes.add(parseAnalysis(upperLine));
-            }else if (upperLine.startsWith(".PRINT")){
-                outputFilters.add(parsePrint(upperLine));
             }else
                 //The normal circuit elements.
                 otherLines.add(upperLine);
@@ -142,6 +137,13 @@ public class CircuitBuilder
             //If String represent a normal circuit element.
             if (line.charAt(0) != '.')
                 parseCircuitElement(circuit, lines, i);
+
+            if (line.startsWith(".AC") || line.startsWith(".DC")){
+                System.out.println("Parse!!");
+                analysisTypes.add(parseAnalysis(line));
+            }else if (line.startsWith(".PRINT")){
+                outputFilters.add(parsePrint(line));
+            }
         }
     }
 
@@ -179,13 +181,7 @@ public class CircuitBuilder
                     System.out.print(nodeList[m] + " ");
                 }
                 System.out.println("\nnodeList above!");
-                HashMap<String, Integer> myTemp = circuit.getNodeMap();
-                Iterator it = myTemp.entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry pairs = (Map.Entry)it.next();
-                    System.out.println(pairs.getKey() + " = " + pairs.getValue());
-                    it.remove(); // avoids a ConcurrentModificationException
-                }
+
 
 
                 for (String node : nodeList)

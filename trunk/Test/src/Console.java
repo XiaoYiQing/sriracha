@@ -76,8 +76,12 @@ public class Console
 
             //no args, running from IDE insert quick test stuff here ...
             //runAndPrint("C:\\Users\\antoine\\Dev\\Sriracha\\bnetlist.txt");
-            runAndPrint("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist.txt");
-
+            //runAndPrint("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist.txt");
+            loadNetslist("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist.txt");
+            List<IPrintData>results = simulator.getAllResults();
+            GnuplotFileMaker gnu = new GnuplotFileMaker(results,
+                    "C:\\1- University stuff\\ECSE 498\\Tests\\force.gp");
+            gnu.writeFiles();
         }
 
         //start shell
