@@ -136,7 +136,7 @@ public class DCNonLinEquation {
         //The scale factor for the b vector.
         double alpha = 0;
         //
-        int steps = 100;
+        int steps = 10;
 
 
         IRealVector x0 = activator.realVector(size);
@@ -145,17 +145,18 @@ public class DCNonLinEquation {
         //x0.setValue(0,0.1);
         //x0.setValue(1,0.1);
 
+        //skip 0th step, where the answer is going to be a zero vector.
         for(int i = 0; i < steps; i++){
+
+            alpha += 1.0/steps;
 
             myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
 
             System.out.println("At iteration " + i + ", with alpha = " + alpha +", answer:");
             System.out.println(answer.getValue(0) + "\n" + answer.getValue(1)+"\n");
 
-            alpha += 1.0/steps;
             x0.copy(answer);
         }
-        myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
 
         return answer;
     }
@@ -165,13 +166,13 @@ public class DCNonLinEquation {
      * the non-linear case.
      * @param G
      * @param b
-     * @param x0 initial guess of node voltages
+     * @param xGuess initial guess of node voltages
      * @param answer the vector in which the final result is stored
      * @return signal variable indicating whether the N-R iter converged or not.
      *      (-1 = divergent, 0 = convergent)
      */
     public int myNewtonRap(IRealMatrix G, IRealVector b,
-        ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector x0, IRealVector answer)
+        ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector xGuess, IRealVector answer)
     {
         /*
         * phi(x) = Gx + f(x) - b
@@ -179,15 +180,22 @@ public class DCNonLinEquation {
         * */
 
         int n = b.getDimension();
-        //initial guess
 
+        double prevChangeMag = Integer.MAX_VALUE;
+        double presentChangeMag;
+
+        //initial guess
+        IRealVector x0 = activator.realVector(n);
+        x0.copy(xGuess);
+        //The non-linear element contribution vector
         IRealVector f0 = activator.realVector(n);
+        //The Hessian matrix
         IRealMatrix df0 = activator.realMatrix(n,n);
 
         IRealVector deltaX = activator.realVector(n);
         IRealVector phi = activator.realVector(n);
+        //The Jacobian matrix
         IRealMatrix J = activator.realMatrix(n,n);
-
 
         do{
 
@@ -210,6 +218,16 @@ public class DCNonLinEquation {
             //deltaX = -J' * phi(x)
             deltaX.copy((IRealVector)J.times(phi).times((-1)));
             x0 = (IRealVector)x0.plus(deltaX);
+
+            presentChangeMag = Math.abs(deltaX.getMaxMag());
+            if(presentChangeMag < prevChangeMag){
+                prevChangeMag = presentChangeMag;
+
+                System.out.println("presentChangeMag: " + presentChangeMag);
+            }else{
+                //return -1;
+            }
+
         }while(deltaX.getMaxMag() > STD_THRESHOLD);
 
         answer.copy(x0);

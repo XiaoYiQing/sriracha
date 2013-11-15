@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e884a6dd-8d07-458d-9fc6-3adc9383ad70" name="Default" comment="Fixed closest port wire connections">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" />
     </list>
     <ignored path="sriracha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +38,7 @@
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383936089060" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383946702337" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384043402594" ignored="false" />
-    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384553357841" ignored="false" />
+    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384557476933" ignored="false" />
     <file path="/NonLinCircuitElement.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384539837808" ignored="false" />
     <file path="/IMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537255111" ignored="false" />
     <file path="/IComplexMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537074622" ignored="false" />
@@ -45,11 +47,11 @@
     <file path="/JsComplexVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384484923887" ignored="false" />
     <file path="/IVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384538580764" ignored="false" />
     <file path="/JsVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384538561261" ignored="false" />
-    <file path="/JsRealVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384541721348" ignored="false" />
+    <file path="/JsRealVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384556678068" ignored="false" />
     <file path="/IRealMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384541698167" ignored="false" />
-    <file path="/JsRealMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384541660936" ignored="false" />
+    <file path="/JsRealMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384556344419" ignored="false" />
     <file path="/a.dummy" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537687825" ignored="false" />
-    <file path="/IRealVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384542179942" ignored="false" />
+    <file path="/IRealVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384556305988" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +141,7 @@
       <file leaf-file-name="JsRealMatrix.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="8" selection-start="3121" selection-end="3292" vertical-scroll-proportion="0.0">
+            <state line="146" column="4" selection-start="3299" selection-end="3299" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -154,10 +156,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IRealVector.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealVector.java">
+      <file leaf-file-name="IVector.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IVector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="39" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
+            <state line="10" column="27" selection-start="185" selection-end="227" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -166,7 +168,7 @@
       <file leaf-file-name="JsRealVector.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="40" selection-start="1312" selection-end="1346" vertical-scroll-proportion="0.0">
+            <state line="133" column="49" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -184,7 +186,7 @@
       <file leaf-file-name="DCNonLinEquation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="130" column="38" selection-start="3455" selection-end="3470" vertical-scroll-proportion="0.20418848">
+            <state line="155" column="35" selection-start="4225" selection-end="4225" vertical-scroll-proportion="-1.3865168">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -196,6 +198,15 @@
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/NonLinCircuitElement.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="55" column="64" selection-start="1912" selection-end="1912" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IRealVector.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealVector.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="30" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -230,10 +241,10 @@
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IVector.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/NonLinCircuitElement.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java" />
-        <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealMatrix.java" />
-        <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java" />
+        <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealVector.java" />
+        <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java" />
       </list>
     </option>
@@ -949,8 +960,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25675675" sideWeight="0.6779141" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3220859" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22141372" sideWeight="0.7929448" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20705521" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20573355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1082,13 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="8" selection-start="3121" selection-end="3292" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="27" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0">
@@ -1098,7 +1102,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IComplex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="0.1859155" />
+        <state line="7" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="0.1859155">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsVector.java">
@@ -1110,28 +1116,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IVector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="34" selection-start="324" selection-end="324" vertical-scroll-proportion="0.44958678">
+        <state line="10" column="27" selection-start="185" selection-end="227" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="40" selection-start="1312" selection-end="1346" vertical-scroll-proportion="0.0">
+        <state line="146" column="4" selection-start="3299" selection-end="3299" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealVector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="39" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
+        <state line="30" column="30" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="49" selection-start="2904" selection-end="2904" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="38" selection-start="3455" selection-end="3470" vertical-scroll-proportion="0.20418848">
+        <state line="155" column="35" selection-start="4225" selection-end="4225" vertical-scroll-proportion="-1.3865168">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -28,12 +28,6 @@ class JsRealVector extends JsVector implements IRealVector
     }
 
     @Override
-    public IVector opposite()
-    {
-        return new JsRealVector(getVector().opposite());
-    }
-
-    @Override
     public IVector minus(IVector vector)
     {
         return plus(vector.opposite());
@@ -133,6 +127,11 @@ class JsRealVector extends JsVector implements IRealVector
         }else{
             return min;
         }
+    }
+
+    @Override
+    public IVector opposite(){
+        return new JsRealVector(vector.opposite());
     }
 
 
