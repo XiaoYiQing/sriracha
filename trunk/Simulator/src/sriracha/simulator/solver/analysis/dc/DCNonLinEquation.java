@@ -23,7 +23,7 @@ import java.util.Iterator;
 public class DCNonLinEquation {
 
     public static final double STD_H = 1e-9;
-    public static final double STD_THRESHOLD = 1e-9;
+    public static final double STD_THRESHOLD = 1e-7;
 
     /**
      * Factory object for the Math module's objects.
@@ -182,6 +182,7 @@ public class DCNonLinEquation {
         IComplexVector phi = (IComplexVector)((G.times(x0)).plus(f0)).minus(b);
         //d(phi(x))/dx = G + df(x)/dx
         IComplexMatrix J = (IComplexMatrix)G.plus(df0);
+
         J.inverse();
 
         //deltaX = -J' * phi(x)
@@ -210,8 +211,28 @@ public class DCNonLinEquation {
         myEq.G = myG;
         myEq.b = myb;
 
-        Diode d1 = new Diode("D1");
-        Diode d2 = new Diode("D2");
-        d1.setNodeIndices(1,0);
+        Diode d1 = new Diode("D1",1);
+        Diode d2 = new Diode("D2",1);
+        d1.setNodeIndices(0,-1);
+        d2.setNodeIndices(1,-1);
+
+        IComplexVector myF = MathActivator.Activator.complexVector(2);
+        IComplexVector myX = MathActivator.Activator.complexVector(2);
+        IComplexMatrix myJ = MathActivator.Activator.complexMatrix(2,2);
+
+        myX.setValue(0,0.1,0);
+        myX.setValue(1,0.1,0);
+
+        myEq.applyNonLinearCircuitElem(d1);
+        myEq.applyNonLinearCircuitElem(d2);
+
+        System.out.println(myEq.myNewtonRap(myEq.G,myEq.b,myX));
+
+        /*d1.getNonLinContribution(myF, myX);
+        d1.getHessianContribution(myJ, myX);
+        System.out.println(myF);
+        System.out.println(myJ);*/
+
+
     }
 }

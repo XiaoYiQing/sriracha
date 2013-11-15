@@ -38,7 +38,8 @@ class JsComplex implements IComplex {
 
     @Override
     public double getMag(){
-        return Math.pow(value.getReal()*value.getReal() + value.getImaginary()*value.getImaginary(),1/2);
+        double sum = (value.getReal()*value.getReal() + value.getImaginary()*value.getImaginary());
+        return Math.sqrt(sum);
     }
 
     @Override
