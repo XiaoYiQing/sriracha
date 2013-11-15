@@ -2,6 +2,8 @@ package sriracha.math.interfaces;
 
 public interface IRealVector extends IVector
 {
+    public IRealVector times(double d);
+
     public double getValue(int i);
 
     public void setValue(int i, double value);
@@ -24,7 +26,7 @@ public interface IRealVector extends IVector
 
     /**
      * Get the vector's highest magnitude. (Returns the absolute value of that value)
-     * @return highest magnitude in the matrix.
+     * @return highest magnitude in the vector.
      */
     public double getMaxMag();
 

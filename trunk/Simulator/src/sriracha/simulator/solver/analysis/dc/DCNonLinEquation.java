@@ -1,11 +1,8 @@
 package sriracha.simulator.solver.analysis.dc;
 
 import sriracha.math.MathActivator;
-import sriracha.math.interfaces.IComplex;
 import sriracha.math.interfaces.IRealMatrix;
 import sriracha.math.interfaces.IRealVector;
-import sriracha.simulator.Options;
-import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.elements.Diode;
 
@@ -131,12 +128,36 @@ public class DCNonLinEquation {
     }
 
     //The following is a temporary method to build up Newton Iteration solver.
+    public IRealVector myNewtonRapComp(IRealMatrix G, IRealVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem){
 
-    public IRealVector myNewRapComp(IRealMatrix G, IRealVector b,
-        ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector x0){
+        int size = b.getDimension();
+
+        //The scale factor for the b vector.
+        double alpha = 0;
+        //
+        int steps = 100;
 
 
-        return null;
+        IRealVector x0 = activator.realVector(size);
+        IRealVector answer = activator.realVector(size);
+
+        //x0.setValue(0,0.1);
+        //x0.setValue(1,0.1);
+
+        for(int i = 0; i < steps; i++){
+
+            myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
+
+            System.out.println("At iteration " + i + ", with alpha = " + alpha +", answer:");
+            System.out.println(answer.getValue(0) + "\n" + answer.getValue(1)+"\n");
+
+            alpha += 1.0/steps;
+            x0.copy(answer);
+        }
+        myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
+
+        return answer;
     }
 
     /**
@@ -146,7 +167,8 @@ public class DCNonLinEquation {
      * @param b
      * @param x0 initial guess of node voltages
      * @param answer the vector in which the final result is stored
-     * @return
+     * @return signal variable indicating whether the N-R iter converged or not.
+     *      (-1 = divergent, 0 = convergent)
      */
     public int myNewtonRap(IRealMatrix G, IRealVector b,
         ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector x0, IRealVector answer)
@@ -229,7 +251,9 @@ public class DCNonLinEquation {
         myEq.applyNonLinearCircuitElem(d1);
         myEq.applyNonLinearCircuitElem(d2);
 
-        myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
+        //myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
+
+        answer = myEq.myNewtonRapComp(myEq.G, myEq.b, myEq.getNonLinearElem());
         System.out.println(answer.getValue(0) + " \n" + answer.getValue(1));
 
         /*d1.getNonLinContribution(myF, myX);
