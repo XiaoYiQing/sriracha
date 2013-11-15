@@ -49,9 +49,8 @@ public class Tests {
         IComplexVector k = (IComplexVector)C.times(b);
         System.out.println("C*b:\n" + k);
         */
-        HashMap<String, Integer> nodeMap = new HashMap<String, Integer>();
-        nodeMap.put("2", 9);
-        System.out.println(nodeMap.get("2"));
+
+
 
 
     }

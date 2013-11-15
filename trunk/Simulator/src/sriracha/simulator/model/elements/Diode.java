@@ -63,19 +63,42 @@ public class Diode extends NonLinCircuitElement{
     @Override
     public void getNonLinContribution(IComplexVector f, IComplexVector x){
 
-        double value = is*(Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt)-1);
-        f.addValue(nodeA, activator.complex(value,0));
-        f.addValue(nodeB, activator.complex(-value,0));
+        //Note: A node value of -1 is ground by default.
+        //If a node is -1, then its voltage is 0 and has contribution
+
+        double value = 0;
+        if(nodeA == -1){
+            value = is*(Math.exp((x.getValue(nodeB).opposite()).getReal()/vt)-1);
+            f.addValue(nodeB, activator.complex(-value,0));
+        }else if(nodeB == -1){
+            value = is*(Math.exp(x.getValue(nodeA).getReal()/vt)-1);
+            f.addValue(nodeA, activator.complex(value,0));
+        }else{
+            value = is*(Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt)-1);
+            f.addValue(nodeA, activator.complex(value,0));
+            f.addValue(nodeB, activator.complex(-value,0));
+        }
+
     }
 
     @Override
     public void getHessianContribution(IComplexMatrix J, IComplexVector x){
-        double value = is/vt*Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt);
+        double value;
 
-        J.addValue(nodeA, nodeA, value, 0);
-        J.addValue(nodeA, nodeB, -value, 0);
-        J.addValue(nodeB, nodeA, -value, 0);
-        J.addValue(nodeB, nodeB, value, 0);
+        if(nodeA == -1){
+            value = is/vt*Math.exp((x.getValue(nodeB).opposite()).getReal()/vt);
+            J.addValue(nodeB, nodeB, value, 0);
+        }else if(nodeB == -1){
+            value = is/vt*Math.exp((x.getValue(nodeA)).getReal()/vt);
+            J.addValue(nodeA, nodeA, value, 0);
+        }else{
+            value = is/vt*Math.exp((x.getValue(nodeA).minus(x.getValue(nodeB))).getReal()/vt);
+
+            J.addValue(nodeA, nodeA, value, 0);
+            J.addValue(nodeA, nodeB, -value, 0);
+            J.addValue(nodeB, nodeA, -value, 0);
+            J.addValue(nodeB, nodeB, value, 0);
+        }
 
     }
 

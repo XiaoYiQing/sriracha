@@ -8,6 +8,7 @@ import sriracha.math.interfaces.IRealMatrix;
 import sriracha.simulator.Options;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
+import sriracha.simulator.model.elements.Diode;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -183,12 +184,34 @@ public class DCNonLinEquation {
         IComplexMatrix J = (IComplexMatrix)G.plus(df0);
         J.inverse();
 
+        //deltaX = -J' * phi(x)
         IComplexVector deltaX = (IComplexVector)J.times(phi).times((-1));
 
         if(deltaX.getMax().getMag() > STD_THRESHOLD){
+            x0 = (IComplexVector)x0.plus(deltaX);
             return myNewtonRap(G, b, x0);
         }else{
             return (IComplexVector)x0.plus(deltaX);
         }
+    }
+
+    public static void main(String[]args){
+
+        IComplexMatrix myG = MathActivator.Activator.complexMatrix(2,2);
+        myG.setValue(0,0,1,0);
+        myG.setValue(0,1,-1,0);
+        myG.setValue(1,0,-1,0);
+        myG.setValue(1,1,1,0);
+
+        IComplexVector myb = MathActivator.Activator.complexVector(2);
+        myb.setValue(0,1,0);
+
+        DCNonLinEquation myEq = new DCNonLinEquation(2);
+        myEq.G = myG;
+        myEq.b = myb;
+
+        Diode d1 = new Diode("D1");
+        Diode d2 = new Diode("D2");
+        d1.setNodeIndices(1,0);
     }
 }

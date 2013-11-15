@@ -139,7 +139,6 @@ public class CircuitBuilder
                 parseCircuitElement(circuit, lines, i);
 
             if (line.startsWith(".AC") || line.startsWith(".DC")){
-                System.out.println("Parse!!");
                 analysisTypes.add(parseAnalysis(line));
             }else if (line.startsWith(".PRINT")){
                 outputFilters.add(parsePrint(line));
