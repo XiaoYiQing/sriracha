@@ -27,6 +27,12 @@ public interface IRealMatrix extends IMatrix
      */
     public double getMin();
 
+    /**
+     * Get the matrix's highest magnitude. (Returns the absolute value of that value)
+     * @return highest magnitude in the matrix.
+     */
+    public double getMaxMag();
+
     public IRealVector solve(IRealVector vector);
 
     public IComplexVector solve(IComplexVector vector);

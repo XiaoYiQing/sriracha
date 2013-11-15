@@ -124,6 +124,19 @@ class JsRealVector extends JsVector implements IRealVector
     }
 
     @Override
+    public double getMaxMag(){
+        double max = Math.abs(getMax());
+        double min = Math.abs(getMin());
+
+        if(max >= min){
+            return max;
+        }else{
+            return min;
+        }
+    }
+
+
+    @Override
     public void clear(){
         int n = getDimension();
         for(int i = 0; i < n; i++){

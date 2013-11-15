@@ -134,6 +134,18 @@ class JsRealMatrix extends JsMatrix implements IRealMatrix
     }
 
     @Override
+    public double getMaxMag(){
+        double max = Math.abs(getMax());
+        double min = Math.abs(getMin());
+
+        if(max >= min){
+            return max;
+        }else{
+            return min;
+        }
+    }
+
+    @Override
     public void clear(){
         int m = getNumberOfRows();
         int n = getNumberOfColumns();

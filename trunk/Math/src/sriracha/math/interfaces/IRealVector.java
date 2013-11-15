@@ -23,6 +23,12 @@ public interface IRealVector extends IVector
     public double getMin();
 
     /**
+     * Get the vector's highest magnitude. (Returns the absolute value of that value)
+     * @return highest magnitude in the matrix.
+     */
+    public double getMaxMag();
+
+    /**
      * Set all values in the vector to 0.
      */
     public void clear();
