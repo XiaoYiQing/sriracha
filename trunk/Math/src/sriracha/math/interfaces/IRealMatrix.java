@@ -8,6 +8,18 @@ public interface IRealMatrix extends IMatrix
 
     public void addValue(int i, int j, double value);
 
+    public void copy(IRealMatrix target);
+
+    public int getNumberOfRows();
+
+    public int getNumberOfColumns();
+
+    /**
+     * Get the matrix's maximum value.
+     * @return highest value in the matrix.
+     */
+    public IComplex getMax();
+
     public IRealVector solve(IRealVector vector);
 
     public IComplexVector solve(IComplexVector vector);
