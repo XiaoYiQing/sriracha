@@ -1,8 +1,6 @@
 package sriracha.simulator.model.elements;
 
-import sriracha.math.interfaces.IComplex;
-import sriracha.math.interfaces.IComplexMatrix;
-import sriracha.math.interfaces.IComplexVector;
+import sriracha.math.interfaces.*;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.models.DiodeModel;
@@ -82,6 +80,27 @@ public class Diode extends NonLinCircuitElement{
     }
 
     @Override
+    public void getNonLinContribution(IRealVector f, IRealVector x){
+
+        //Note: A node value of -1 is ground by default.
+        //If a node is -1, then its voltage is 0 and has contribution
+
+        double value = 0;
+        if(nodeA == -1){
+            value = is*Math.exp((-1*(x.getValue(nodeB))/vt)-1);
+            f.addValue(nodeB, -value);
+        }else if(nodeB == -1){
+            value = is*(Math.exp(x.getValue(nodeA)/vt)-1);
+            f.addValue(nodeA, value);
+        }else{
+            value = is*(Math.exp((x.getValue(nodeA)-x.getValue(nodeB))/vt)-1);
+            f.addValue(nodeA, value);
+            f.addValue(nodeB, -value);
+        }
+
+    }
+
+    @Override
     public void getHessianContribution(IComplexMatrix J, IComplexVector x){
         double value;
 
@@ -98,6 +117,27 @@ public class Diode extends NonLinCircuitElement{
             J.addValue(nodeA, nodeB, -value, 0);
             J.addValue(nodeB, nodeA, -value, 0);
             J.addValue(nodeB, nodeB, value, 0);
+        }
+
+    }
+
+    @Override
+    public void getHessianContribution(IRealMatrix J, IRealVector x){
+        double value;
+
+        if(nodeA == -1){
+            value = is/vt*Math.exp(-x.getValue(nodeB)/vt);
+            J.addValue(nodeB, nodeB, value);
+        }else if(nodeB == -1){
+            value = is/vt*Math.exp((x.getValue(nodeA))/vt);
+            J.addValue(nodeA, nodeA, value);
+        }else{
+            value = is/vt*Math.exp((x.getValue(nodeA)-(x.getValue(nodeB)))/vt);
+
+            J.addValue(nodeA, nodeA, value);
+            J.addValue(nodeA, nodeB, -value);
+            J.addValue(nodeB, nodeA, -value);
+            J.addValue(nodeB, nodeB, value);
         }
 
     }
