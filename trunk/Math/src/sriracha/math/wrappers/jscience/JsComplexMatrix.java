@@ -126,6 +126,29 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
         }
     }
 
+    @Override
+    public void copy(IComplexMatrix target){
+        if((target.getNumberOfRows()==this.getNumberOfRows()&&
+                (target.getNumberOfColumns()==this.getNumberOfColumns())))
+
+            for(int i = 0; i < target.getNumberOfRows(); i++){
+                for(int j = 0; j < target.getNumberOfColumns(); j++){
+                    this.setValue(i,j,target.getValue(i,j));
+                }
+            }
+        else
+            System.out.println("Error: unmatched matrix size for copying.  No change applied.");
+    }
+
+    @Override
+    public int getNumberOfRows(){
+        return matrix.getNumberOfRows();
+    }
+
+    @Override
+    public int getNumberOfColumns(){
+        return matrix.getNumberOfColumns();
+    }
 
     @Override
     public IMatrix clone()

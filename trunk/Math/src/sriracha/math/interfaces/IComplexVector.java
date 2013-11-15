@@ -12,6 +12,7 @@ public interface IComplexVector extends IVector {
 
     public void addValue(int i, double real, double complex);
 
+    public void copy(IComplexVector target);
     /**
      * Get the vector's maximum complex value according to magnitude of the
      * complex number.

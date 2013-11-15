@@ -23,7 +23,7 @@ import java.util.Iterator;
 public class DCNonLinEquation {
 
     public static final double STD_H = 1e-9;
-    public static final double STD_THRESHOLD = 1e-7;
+    public static final double STD_THRESHOLD = 1e-4;
 
     /**
      * Factory object for the Math module's objects.
@@ -150,18 +150,25 @@ public class DCNonLinEquation {
 
     //The following is a temporary method to build up Newton Iteration solver.
 
+    public IComplexVector myNewRapComp(IComplexMatrix G, IComplexVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0){
+
+
+        return null;
+    }
+
     /**
      * A Newton Raphson iteration method which is taylored to solve
      * the non-linear case.
      * @param G
      * @param b
      * @param x0 initial guess of node voltages
+     * @param answer the vector in which the final result is stored
      * @return
      */
-    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b,
-        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0)
+    public int myNewtonRap(IComplexMatrix G, IComplexVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0, IComplexVector answer)
     {
-
         /*
         * phi(x) = Gx + f(x) - b
         * d(phi(x))/dx = G + df(x)/dx
@@ -174,29 +181,48 @@ public class DCNonLinEquation {
         IComplexVector f0 = activator.complexVector(n);
         IComplexMatrix df0 = activator.complexMatrix(n,n);
 
-        for(int i = 0; i < nonLinearElem.size(); i++){
-            nonLinearElem.get(i).getNonLinContribution(f0,x0);
-            nonLinearElem.get(i).getHessianContribution(df0,x0);
-        }
+        IComplexVector deltaX = activator.complexVector(n);
+        IComplexVector phi = activator.complexVector(n);
+        IComplexMatrix J = activator.complexMatrix(n,n);
 
-        //phi(x) = Gx + f(x) - b
-        IComplexVector phi = (IComplexVector)((G.times(x0)).plus(f0)).minus(b);
-        //d(phi(x))/dx = G + df(x)/dx
-        IComplexMatrix J = (IComplexMatrix)G.plus(df0);
 
-        J.inverse();
+        do{
 
-        //deltaX = -J' * phi(x)
-        IComplexVector deltaX = (IComplexVector)J.times(phi).times((-1));
+            f0.clear();
+            df0.clear();
 
-        if(deltaX.getMax().getMag() > STD_THRESHOLD){
+            for(int i = 0; i < nonLinearElem.size(); i++){
+                nonLinearElem.get(i).getNonLinContribution(f0,x0);
+                nonLinearElem.get(i).getHessianContribution(df0,x0);
+            }
+
+
+            //phi(x) = Gx + f(x) - b
+            phi.copy((IComplexVector)((G.times(x0)).plus(f0)).minus(b));
+            //d(phi(x))/dx = G + df(x)/dx
+            J.copy((IComplexMatrix)G.plus(df0));
+
+            System.out.println("phi:\n" + phi);
+
+            J.inverse();
+
+            //deltaX = -J' * phi(x)
+            deltaX.copy((IComplexVector)J.times(phi).times((-1)));
+
+            //if(deltaX.getMax().getMag() > STD_THRESHOLD){
             x0 = (IComplexVector)x0.plus(deltaX);
-            return myNewtonRap(G, b, nonLinearElem, x0);
-        }else{
-            return (IComplexVector)x0.plus(deltaX);
-        }
-    }
+                //myNewtonRap(G, b, nonLinearElem, x0, target);
+            //}else{
+                //Copy the final answer vector into the target vector.
+                //target.copy((IComplexVector)x0.plus(deltaX));
+            //}
 
+            System.out.println(deltaX);
+
+        }while(deltaX.getMax().getMag() > STD_THRESHOLD);
+        answer.copy(x0);
+        return 0;
+    }
 
     public ArrayList<NonLinCircuitElement> getNonLinearElem() {
         return nonLinearElem;
@@ -225,6 +251,7 @@ public class DCNonLinEquation {
         IComplexVector myF = MathActivator.Activator.complexVector(2);
         IComplexVector myX = MathActivator.Activator.complexVector(2);
         IComplexMatrix myJ = MathActivator.Activator.complexMatrix(2, 2);
+        IComplexVector answer = MathActivator.Activator.complexVector(2);
 
         myX.setValue(0,0.1,0);
         myX.setValue(1,0.1,0);
@@ -232,7 +259,8 @@ public class DCNonLinEquation {
         myEq.applyNonLinearCircuitElem(d1);
         myEq.applyNonLinearCircuitElem(d2);
 
-        System.out.println(myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX));
+        myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
+        System.out.println(answer);
 
         /*d1.getNonLinContribution(myF, myX);
         d1.getHessianContribution(myJ, myX);

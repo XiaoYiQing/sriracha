@@ -135,6 +135,19 @@ class JsComplexVector extends JsVector implements IComplexVector
     }
 
     @Override
+    public void copy(IComplexVector target){
+        int n = target.getDimension();
+        if(n == this.getDimension()){
+            for(int i = 0; i < n; i++){
+                this.setValue(i, target.getValue(i));
+            }
+        }else{
+            System.out.println("Error: unmatched vector size for copying.  No change applied.");
+        }
+    }
+
+
+    @Override
     public String toString()
     {
         DecimalFormat format = new DecimalFormat("0.000E00");

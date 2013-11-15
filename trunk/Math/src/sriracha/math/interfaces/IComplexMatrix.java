@@ -12,6 +12,18 @@ public interface IComplexMatrix extends IMatrix{
 
     public void addValue(int i, int j, double real, double complex);
 
+    /**
+     * Copy all complex values within the target Complex matrix, IF both matrices have
+     * the same size.
+     * @param target target matrix.
+     */
+    public void copy(IComplexMatrix target);
+
+    public int getNumberOfRows();
+
+    public int getNumberOfColumns();
+
+
     @Override
     public IComplexVector solve(IVector vector);
 
