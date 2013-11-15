@@ -131,6 +131,28 @@ abstract class JsMatrix implements IMatrix
     }
 
     @Override
+    public int getNumberOfRows(){
+        return matrix.getNumberOfRows();
+    }
+    @Override
+    public int getNumberOfColumns(){
+        return matrix.getNumberOfColumns();
+    }
+
+    public void inverse(){
+        matrix = matrix.inverse();
+    }
+
+    public void transpose(){
+        matrix = matrix.transpose();
+    }
+
+    public boolean sameSize(IMatrix target){
+        return (matrix.getNumberOfRows()==target.getNumberOfRows())&&
+                (matrix.getNumberOfColumns()==target.getNumberOfColumns());
+    }
+
+    @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();

@@ -2,10 +2,7 @@ package sriracha.math.wrappers.jscience;
 
 import org.jscience.mathematics.number.Float64;
 import org.jscience.mathematics.vector.Float64Matrix;
-import sriracha.math.interfaces.IComplexVector;
-import sriracha.math.interfaces.IRealMatrix;
-import sriracha.math.interfaces.IRealVector;
-import sriracha.math.interfaces.IVector;
+import sriracha.math.interfaces.*;
 
 import java.text.DecimalFormat;
 
@@ -83,6 +80,71 @@ class JsRealMatrix extends JsMatrix implements IRealMatrix
         getMatrix().set(i, j, previousValue.plus(value));
 
     }
+
+    @Override
+    public void copy(IRealMatrix target){
+
+        if(this.sameSize(target)){
+            int m = getNumberOfRows();
+            int n = getNumberOfColumns();
+            for(int i = 0; i < m; i++)
+                for(int j = 0; j < n; j++)
+                    this.setValue(i, j, target.getValue(i, j));
+        }else{
+            System.out.println("Error: unmatched matrix size for copying.  No change applied.");
+        }
+    }
+
+    @Override
+    public double getMax(){
+        int m = getNumberOfRows();
+        int n = getNumberOfColumns();
+        double temp;
+
+        double max = 0;
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                temp = this.getValue(i, j);
+                if(temp > max){
+                    max = temp;
+                }
+            }
+        }
+        return max;
+    }
+
+    @Override
+    public double getMin(){
+        int m = getNumberOfRows();
+        int n = getNumberOfColumns();
+        double temp;
+
+        double min = 0;
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                temp = this.getValue(i, j);
+                if(temp < min){
+                    min = temp;
+                }
+            }
+        }
+        return min;
+    }
+
+    @Override
+    public void clear(){
+        int m = getNumberOfRows();
+        int n = getNumberOfColumns();
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                this.setValue(i, j, 0);
+            }
+        }
+    }
+
 
     @Override
     public String toString()

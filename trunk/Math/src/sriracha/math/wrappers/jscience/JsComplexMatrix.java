@@ -112,9 +112,37 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
         }
 
         return new JsComplex(myMat.get(maxRow, maxCol).getReal(),
-                myMat.get(maxRow, maxCol).getImaginary()) {
+            myMat.get(maxRow, maxCol).getImaginary()) {
         };
     }
+
+    @Override
+    public IComplex getMin(){
+        ComplexMatrix myMat = (ComplexMatrix) matrix;
+        int m = myMat.getNumberOfRows();
+        int n = myMat.getNumberOfColumns();
+        double temp = 0;
+
+        double min = 0;
+        int minRow = 0;
+        int minCol = 0;
+
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                temp = myMat.get(i,j).magnitude();
+                if(temp < min){
+                    min = temp;
+                    minRow = i;
+                    minCol = j;
+                }
+            }
+        }
+
+        return new JsComplex(myMat.get(minRow, minCol).getReal(),
+            myMat.get(minRow, minCol).getImaginary()) {
+        };
+    }
+
 
     @Override
     public void clear()
@@ -138,16 +166,6 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
             }
         else
             System.out.println("Error: unmatched matrix size for copying.  No change applied.");
-    }
-
-    @Override
-    public int getNumberOfRows(){
-        return matrix.getNumberOfRows();
-    }
-
-    @Override
-    public int getNumberOfColumns(){
-        return matrix.getNumberOfColumns();
     }
 
     @Override
@@ -176,11 +194,6 @@ class JsComplexMatrix extends JsMatrix implements IComplexMatrix
             sb.append('\n');
         }
         return sb.toString();
-    }
-
-    @Override
-    public void inverse(){
-        matrix = matrix.inverse();
     }
 
 }

@@ -19,11 +19,6 @@ public interface IComplexMatrix extends IMatrix{
      */
     public void copy(IComplexMatrix target);
 
-    public int getNumberOfRows();
-
-    public int getNumberOfColumns();
-
-
     @Override
     public IComplexVector solve(IVector vector);
 
@@ -35,12 +30,14 @@ public interface IComplexMatrix extends IMatrix{
     public IComplex getMax();
 
     /**
+     * Get the matrix's minimum complex value according to magnitude of the
+     * complex number.
+     * @return Complex value with the highest magnitude.
+     */
+    public IComplex getMin();
+
+    /**
      * Set all values in the matrix to 0.
      */
     public void clear();
-
-    /**
-     * Invert this matrix instance.
-     */
-    public void inverse();
 }
