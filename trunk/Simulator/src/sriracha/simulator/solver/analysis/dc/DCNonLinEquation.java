@@ -153,12 +153,13 @@ public class DCNonLinEquation {
     /**
      * A Newton Raphson iteration method which is taylored to solve
      * the non-linear case.
-     * @param G actually: (G+C/h)
-     * @param b actually: (C/h*x(n) + b(n+1))
+     * @param G
+     * @param b
      * @param x0 initial guess of node voltages
      * @return
      */
-    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b, IComplexVector x0)
+    public IComplexVector myNewtonRap(IComplexMatrix G, IComplexVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0)
     {
 
         /*
@@ -190,10 +191,15 @@ public class DCNonLinEquation {
 
         if(deltaX.getMax().getMag() > STD_THRESHOLD){
             x0 = (IComplexVector)x0.plus(deltaX);
-            return myNewtonRap(G, b, x0);
+            return myNewtonRap(G, b, nonLinearElem, x0);
         }else{
             return (IComplexVector)x0.plus(deltaX);
         }
+    }
+
+
+    public ArrayList<NonLinCircuitElement> getNonLinearElem() {
+        return nonLinearElem;
     }
 
     public static void main(String[]args){
@@ -218,7 +224,7 @@ public class DCNonLinEquation {
 
         IComplexVector myF = MathActivator.Activator.complexVector(2);
         IComplexVector myX = MathActivator.Activator.complexVector(2);
-        IComplexMatrix myJ = MathActivator.Activator.complexMatrix(2,2);
+        IComplexMatrix myJ = MathActivator.Activator.complexMatrix(2, 2);
 
         myX.setValue(0,0.1,0);
         myX.setValue(1,0.1,0);
@@ -226,7 +232,7 @@ public class DCNonLinEquation {
         myEq.applyNonLinearCircuitElem(d1);
         myEq.applyNonLinearCircuitElem(d2);
 
-        System.out.println(myEq.myNewtonRap(myEq.G,myEq.b,myX));
+        System.out.println(myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX));
 
         /*d1.getNonLinContribution(myF, myX);
         d1.getHessianContribution(myJ, myX);
