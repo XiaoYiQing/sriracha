@@ -17,4 +17,7 @@ public interface IVector {
     public Vector getVector();
 
     public IVector opposite();
+
+    public boolean sameSize(IVector target);
+
 }

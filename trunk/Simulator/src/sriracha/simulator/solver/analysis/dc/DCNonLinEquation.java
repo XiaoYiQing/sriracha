@@ -2,9 +2,8 @@ package sriracha.simulator.solver.analysis.dc;
 
 import sriracha.math.MathActivator;
 import sriracha.math.interfaces.IComplex;
-import sriracha.math.interfaces.IComplexMatrix;
-import sriracha.math.interfaces.IComplexVector;
 import sriracha.math.interfaces.IRealMatrix;
+import sriracha.math.interfaces.IRealVector;
 import sriracha.simulator.Options;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
@@ -33,13 +32,13 @@ public class DCNonLinEquation {
     private int circuitNodeCount;
 
 
-    private IComplexMatrix C;
+    private IRealMatrix C;
 
-    private IComplexMatrix G;
+    private IRealMatrix G;
 
-    private IComplexVector b;
+    private IRealVector b;
 
-    private IComplexVector f;
+    private IRealVector f;
 
     private ArrayList<NonLinCircuitElement> nonLinearElem;
     /**
@@ -50,10 +49,10 @@ public class DCNonLinEquation {
     private DCNonLinEquation(int circuitNodeCount)
     {
         this.circuitNodeCount = circuitNodeCount;
-        C = activator.complexMatrix(circuitNodeCount, circuitNodeCount);
-        G = activator.complexMatrix(circuitNodeCount, circuitNodeCount);
-        b = activator.complexVector(circuitNodeCount);
-        f = activator.complexVector(circuitNodeCount);
+        C = activator.realMatrix(circuitNodeCount, circuitNodeCount);
+        G = activator.realMatrix(circuitNodeCount, circuitNodeCount);
+        b = activator.realVector(circuitNodeCount);
+        f = activator.realVector(circuitNodeCount);
 
         //Note: the array list initiate with a guessed size of amount of
         //non-linear circuit element. (guessing it as number of nodes)
@@ -65,41 +64,24 @@ public class DCNonLinEquation {
     }
 
     /**
-     * Apply complex matrix stamp value to the complex matrix equation.
-     * Used by circuit elements.
+     * Apply stamp value to the matrix equation.
      * @param i x matrix coordinate
      * @param j y matrix coordinate
      * @param value
      */
-    public void applyComplexMatrixStamp(int i, int j, double value)
+    public void applyMatrixStamp(int i, int j, double value)
     {
+
         //no stamps to ground
         if (i == -1 || j == -1) return;
 
         if (value != 0)
-        {
-            G.addValue(i, j, activator.complex(0, value));
-        }
+            C.addValue(i, j, value);
+
+
     }
 
-    /**
-     * Apply real matrix stamp value to the real matrix equation.
-     * @param i x matrix coordinate
-     * @param j y matrix coordinate
-     * @param value
-     */
-    public void applyRealMatrixStamp(int i, int j, double value)
-    {
-        //no stamps to ground
-        if (i == -1 || j == -1) return;
-
-        if (value != 0)
-        {
-            C.addValue(i, j, activator.complex(value, 0));
-        }
-    }
-
-    public void applySourceVectorStamp(int i, IComplex d)
+    public void applySourceVectorStamp(int i, double d)
     {
         //no stamps to ground
         if (i == -1) return;
@@ -112,27 +94,27 @@ public class DCNonLinEquation {
      * conditions.
      * @return
      */
-    IComplexVector solve()
+    IRealVector solve()
     {
         //create a new f vector
         int n = f.getDimension();
-        f = activator.complexVector(n);
+        f = activator.realVector(n);
 
         double h = STD_H;
         double deltaX;
 
-        IComplexMatrix G1;
-        IComplexVector b1;
+        IRealMatrix G1;
+        IRealVector b1;
 
         //Initial guess is a all 0 vector.
-        IComplexVector x = activator.complexVector(n);
+        IRealVector x = activator.realVector(n);
         NonLinCircuitElement nextElem;
 
         do{
             //G1 = G + C/h
-            G1 = (IComplexMatrix)C.plus(G.times(1/h));
+            G1 = (IRealMatrix)C.plus(G.times(1/h));
             //b1 = (1/h)*C*x + b
-            b1 = (IComplexVector)(((C.times(x)).times(1/h)).plus(b));
+            b1 = (IRealVector)(((C.times(x)).times(1/h)).plus(b));
             deltaX = 1;
 
             while(deltaX > STD_THRESHOLD){
@@ -143,15 +125,15 @@ public class DCNonLinEquation {
             }
 
 
-        }while(f.getMax().getMag()>1e-15);
+        }while(f.getMax()>1e-15);
 
         return null;
     }
 
     //The following is a temporary method to build up Newton Iteration solver.
 
-    public IComplexVector myNewRapComp(IComplexMatrix G, IComplexVector b,
-        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0){
+    public IRealVector myNewRapComp(IRealMatrix G, IRealVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector x0){
 
 
         return null;
@@ -166,8 +148,8 @@ public class DCNonLinEquation {
      * @param answer the vector in which the final result is stored
      * @return
      */
-    public int myNewtonRap(IComplexMatrix G, IComplexVector b,
-        ArrayList<NonLinCircuitElement> nonLinearElem, IComplexVector x0, IComplexVector answer)
+    public int myNewtonRap(IRealMatrix G, IRealVector b,
+        ArrayList<NonLinCircuitElement> nonLinearElem, IRealVector x0, IRealVector answer)
     {
         /*
         * phi(x) = Gx + f(x) - b
@@ -178,12 +160,12 @@ public class DCNonLinEquation {
         int n = b.getDimension();
         //initial guess
 
-        IComplexVector f0 = activator.complexVector(n);
-        IComplexMatrix df0 = activator.complexMatrix(n,n);
+        IRealVector f0 = activator.realVector(n);
+        IRealMatrix df0 = activator.realMatrix(n,n);
 
-        IComplexVector deltaX = activator.complexVector(n);
-        IComplexVector phi = activator.complexVector(n);
-        IComplexMatrix J = activator.complexMatrix(n,n);
+        IRealVector deltaX = activator.realVector(n);
+        IRealVector phi = activator.realVector(n);
+        IRealMatrix J = activator.realMatrix(n,n);
 
 
         do{
@@ -198,28 +180,28 @@ public class DCNonLinEquation {
 
 
             //phi(x) = Gx + f(x) - b
-            phi.copy((IComplexVector)((G.times(x0)).plus(f0)).minus(b));
+            phi.copy((IRealVector)((G.times(x0)).plus(f0)).minus(b));
             //d(phi(x))/dx = G + df(x)/dx
-            J.copy((IComplexMatrix)G.plus(df0));
+            J.copy((IRealMatrix)G.plus(df0));
 
             System.out.println("phi:\n" + phi);
 
             J.inverse();
 
             //deltaX = -J' * phi(x)
-            deltaX.copy((IComplexVector)J.times(phi).times((-1)));
+            deltaX.copy((IRealVector)J.times(phi).times((-1)));
 
             //if(deltaX.getMax().getMag() > STD_THRESHOLD){
-            x0 = (IComplexVector)x0.plus(deltaX);
+            x0 = (IRealVector)x0.plus(deltaX);
                 //myNewtonRap(G, b, nonLinearElem, x0, target);
             //}else{
                 //Copy the final answer vector into the target vector.
-                //target.copy((IComplexVector)x0.plus(deltaX));
+                //target.copy((IRealVector)x0.plus(deltaX));
             //}
 
             System.out.println(deltaX);
 
-        }while(deltaX.getMax().getMag() > STD_THRESHOLD);
+        }while(deltaX.getMax() > STD_THRESHOLD);
         answer.copy(x0);
         return 0;
     }
@@ -230,14 +212,14 @@ public class DCNonLinEquation {
 
     public static void main(String[]args){
 
-        IComplexMatrix myG = MathActivator.Activator.complexMatrix(2,2);
-        myG.setValue(0,0,1,0);
-        myG.setValue(0,1,-1,0);
-        myG.setValue(1,0,-1,0);
-        myG.setValue(1,1,1,0);
+        IRealMatrix myG = MathActivator.Activator.realMatrix(2,2);
+        myG.setValue(0,0,1);
+        myG.setValue(0,1,-1);
+        myG.setValue(1,0,-1);
+        myG.setValue(1,1,1);
 
-        IComplexVector myb = MathActivator.Activator.complexVector(2);
-        myb.setValue(0,1,0);
+        IRealVector myb = MathActivator.Activator.realVector(2);
+        myb.setValue(0,1);
 
         DCNonLinEquation myEq = new DCNonLinEquation(2);
         myEq.G = myG;
@@ -248,13 +230,13 @@ public class DCNonLinEquation {
         d1.setNodeIndices(0,-1);
         d2.setNodeIndices(1,-1);
 
-        IComplexVector myF = MathActivator.Activator.complexVector(2);
-        IComplexVector myX = MathActivator.Activator.complexVector(2);
-        IComplexMatrix myJ = MathActivator.Activator.complexMatrix(2, 2);
-        IComplexVector answer = MathActivator.Activator.complexVector(2);
+        IRealVector myF = MathActivator.Activator.realVector(2);
+        IRealVector myX = MathActivator.Activator.realVector(2);
+        IRealMatrix myJ = MathActivator.Activator.realMatrix(2, 2);
+        IRealVector answer = MathActivator.Activator.realVector(2);
 
-        myX.setValue(0,0.1,0);
-        myX.setValue(1,0.1,0);
+        myX.setValue(0,0.1);
+        myX.setValue(1,0.1);
 
         myEq.applyNonLinearCircuitElem(d1);
         myEq.applyNonLinearCircuitElem(d2);

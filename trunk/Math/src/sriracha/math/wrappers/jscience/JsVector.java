@@ -55,6 +55,10 @@ abstract class JsVector implements IVector
         return plus(vector.opposite());
     }
 
+    public boolean sameSize(IVector target){
+        return target.getDimension() == this.getDimension();
+    }
+
     @Override
     public String toString()
     {
@@ -66,7 +70,6 @@ abstract class JsVector implements IVector
         }
         return sb.toString();
     }
-
 
     @Override
     public abstract IVector clone();
