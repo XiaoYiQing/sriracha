@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e884a6dd-8d07-458d-9fc6-3adc9383ad70" name="Default" comment="Fixed closest port wire connections">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sriracha.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384550143848" ignored="false" />
+    <file path="/Dummy.txt" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384625671672" ignored="false" />
     <file path="/fragment.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1379702167405" ignored="false" />
     <file path="/WireManager.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380666651345" ignored="false" />
     <file path="/CircuitDesigner.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380581236001" ignored="false" />
@@ -38,7 +36,7 @@
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383936089060" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383946702337" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384043402594" ignored="false" />
-    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384560919698" ignored="false" />
+    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384628501367" ignored="false" />
     <file path="/NonLinCircuitElement.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384539837808" ignored="false" />
     <file path="/IMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537255111" ignored="false" />
     <file path="/IComplexMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537074622" ignored="false" />
@@ -186,7 +184,7 @@
       <file leaf-file-name="DCNonLinEquation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="33" selection-start="5047" selection-end="5047" vertical-scroll-proportion="-2.094382">
+            <state line="296" column="10" selection-start="9088" selection-end="9088" vertical-scroll-proportion="0.46516854">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -671,8 +669,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -689,12 +687,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Application.DCNonLinEquation">
     <configuration default="false" name="Console" type="Application" factoryName="Application" temporary="true">
@@ -783,6 +781,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -808,19 +819,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1041,9 +1039,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="8" selection-start="1427" selection-end="1427" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="52" column="8" selection-start="1427" selection-end="1427" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java">
@@ -1055,16 +1051,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="19" selection-start="631" selection-end="660" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="37" column="19" selection-start="631" selection-end="660" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsComplexMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="12" selection-start="2789" selection-end="2789" vertical-scroll-proportion="-2.2662036">
-          <folding />
-        </state>
+        <state line="114" column="12" selection-start="2789" selection-end="2789" vertical-scroll-proportion="-2.2662036" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/models/DiodeModel.java">
@@ -1081,9 +1073,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IComplexVector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="17" selection-start="52" selection-end="52" vertical-scroll-proportion="0.08018868">
-          <folding />
-        </state>
+        <state line="2" column="17" selection-start="52" selection-end="52" vertical-scroll-proportion="0.08018868" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
@@ -1102,9 +1092,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IComplex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="0.1859155">
-          <folding />
-        </state>
+        <state line="7" column="17" selection-start="178" selection-end="178" vertical-scroll-proportion="0.1859155" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsVector.java">
@@ -1144,7 +1132,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="33" selection-start="5047" selection-end="5047" vertical-scroll-proportion="-2.094382">
+        <state line="296" column="10" selection-start="9088" selection-end="9088" vertical-scroll-proportion="0.46516854">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

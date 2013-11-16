@@ -19,7 +19,7 @@ import java.util.Iterator;
 public class DCNonLinEquation {
 
     public static final double STD_H = 1e-9;
-    public static final double STD_THRESHOLD = 1e-4;
+    public static final double STD_THRESHOLD = 9e-15;
     public static final int STD_DIVERGENCE_TOLERANCE = 5;
     public static final int STD_CONT_METHOD_ATTEMPTS = 3;
 
@@ -138,7 +138,7 @@ public class DCNonLinEquation {
         //The scale factor for the b vector.
         double alpha = 0;
         //Amount of steps toward the final alpha = 1
-        int steps = 10;
+        int steps = 100;
         //integer indicating whether the continuation method attempt was successful.
         //  (0 = success, -1 = failure)
         int success = -1;
@@ -161,7 +161,7 @@ public class DCNonLinEquation {
                 //steps to aim for a better change of convergence.  Restart continuation method.
                 if(success == -1){
                     alpha = 0;
-                    steps *= 10;
+                    steps *= 100;
                     x0.clear();
                     failedAttempts++;
                     break;
@@ -262,39 +262,46 @@ public class DCNonLinEquation {
 
     public static void main(String[]args){
 
-        IRealMatrix myG = MathActivator.Activator.realMatrix(2,2);
+        IRealMatrix myG = MathActivator.Activator.realMatrix(3,3);
         myG.setValue(0,0,1);
         myG.setValue(0,1,-1);
         myG.setValue(1,0,-1);
-        myG.setValue(1,1,1);
+        myG.setValue(1,1,2);
+        myG.setValue(2,2,1);
 
-        IRealVector myb = MathActivator.Activator.realVector(2);
-        myb.setValue(0,1);
+        IRealVector myb = MathActivator.Activator.realVector(3);
+        myb.setValue(0,2);
 
-        DCNonLinEquation myEq = new DCNonLinEquation(2);
+        DCNonLinEquation myEq = new DCNonLinEquation(3);
         myEq.G = myG;
         myEq.b = myb;
 
-        Diode d1 = new Diode("D1",1);
-        Diode d2 = new Diode("D2",1);
-        d1.setNodeIndices(0,-1);
-        d2.setNodeIndices(1,-1);
+        Diode d1 = new Diode("D1",1e-5);
+        Diode d2 = new Diode("D2",1e-4);
+        Diode d3 = new Diode("D3",1e-6);
 
-        IRealVector myF = MathActivator.Activator.realVector(2);
-        IRealVector myX = MathActivator.Activator.realVector(2);
-        IRealMatrix myJ = MathActivator.Activator.realMatrix(2, 2);
-        IRealVector answer = MathActivator.Activator.realVector(2);
+        d1.setNodeIndices(1,-1);
+        d2.setNodeIndices(0,2);
+        d3.setNodeIndices(2,-1);
 
-        myX.setValue(0,0.1);
-        myX.setValue(1,0.1);
+        //IRealVector myF = MathActivator.Activator.realVector(3);
+        //IRealVector myX = MathActivator.Activator.realVector(3);
+        //IRealMatrix myJ = MathActivator.Activator.realMatrix(3, 3);
+        IRealVector answer = MathActivator.Activator.realVector(3);
 
-        myEq.applyNonLinearCircuitElem(d1);
-        myEq.applyNonLinearCircuitElem(d2);
+        //myX.setValue(0,0.1);
+        //myX.setValue(1,0.1);
+
+        //myEq.applyNonLinearCircuitElem(d1);
+        //myEq.applyNonLinearCircuitElem(d2);
+        //myEq.applyNonLinearCircuitElem(d3);
+
 
         //myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
 
         answer = myEq.myNewtonRapComp(myEq.G, myEq.b, myEq.getNonLinearElem());
-        System.out.println(answer.getValue(0) + " \n" + answer.getValue(1));
+        System.out.println(answer.getValue(0) + " \n" + answer.getValue(1) +
+            "\n" + answer.getValue(2));
 
         /*d1.getNonLinContribution(myF, myX);
         d1.getHessianContribution(myJ, myX);
