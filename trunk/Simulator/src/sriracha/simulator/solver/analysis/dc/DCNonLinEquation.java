@@ -20,6 +20,8 @@ public class DCNonLinEquation {
 
     public static final double STD_H = 1e-9;
     public static final double STD_THRESHOLD = 1e-4;
+    public static final int STD_DIVERGENCE_TOLERANCE = 5;
+    public static final int STD_CONT_METHOD_ATTEMPTS = 3;
 
     /**
      * Factory object for the Math module's objects.
@@ -135,9 +137,12 @@ public class DCNonLinEquation {
 
         //The scale factor for the b vector.
         double alpha = 0;
-        //
+        //Amount of steps toward the final alpha = 1
         int steps = 10;
-
+        //integer indicating whether
+        int success = -1;
+        //integer indicating the amount of failed attempts at continuation method
+        int failedAttempts = 0;
 
         IRealVector x0 = activator.realVector(size);
         IRealVector answer = activator.realVector(size);
@@ -145,17 +150,24 @@ public class DCNonLinEquation {
         //x0.setValue(0,0.1);
         //x0.setValue(1,0.1);
 
-        //skip 0th step, where the answer is going to be a zero vector.
-        for(int i = 0; i < steps; i++){
+        while(success == -1 && failedAttempts < 3){
+            //skip 0th step, where the answer is going to be a zero vector.
+            for(int i = 0; i < steps; i++){
 
-            alpha += 1.0/steps;
+                alpha += 1.0/steps;
 
-            myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
+                success = myNewtonRap(G, (b.times(alpha)), nonLinearElem, x0, answer);
+                //When divergence occurs, reset all values and chose a larger amounts of
+                //steps to aim for a better change of convergence.  Restart continuation method.
+                if(success == -1){
+                    alpha = 0;
+                    steps *= 10;
+                    x0.clear();
+                    break;
+                }
 
-            System.out.println("At iteration " + i + ", with alpha = " + alpha +", answer:");
-            System.out.println(answer.getValue(0) + "\n" + answer.getValue(1)+"\n");
-
-            x0.copy(answer);
+                x0.copy(answer);
+            }
         }
 
         return answer;
@@ -179,7 +191,11 @@ public class DCNonLinEquation {
         * d(phi(x))/dx = G + df(x)/dx
         * */
 
+        //dimension of the square matrix
         int n = b.getDimension();
+
+        //flag indicating how many times iteration changes are divergent
+        int flag = 0;
 
         double prevChangeMag = Integer.MAX_VALUE;
         double presentChangeMag;
@@ -202,6 +218,7 @@ public class DCNonLinEquation {
             f0.clear();
             df0.clear();
 
+            //Get the non-linear contribution of the present node voltage guess vector
             for(int i = 0; i < nonLinearElem.size(); i++){
                 nonLinearElem.get(i).getNonLinContribution(f0,x0);
                 nonLinearElem.get(i).getHessianContribution(df0,x0);
@@ -219,16 +236,19 @@ public class DCNonLinEquation {
             deltaX.copy((IRealVector)J.times(phi).times((-1)));
             x0 = (IRealVector)x0.plus(deltaX);
 
-            presentChangeMag = Math.abs(deltaX.getMaxMag());
+            presentChangeMag = deltaX.getMaxMag();
             if(presentChangeMag < prevChangeMag){
+                flag = 0;
                 prevChangeMag = presentChangeMag;
-
-                System.out.println("presentChangeMag: " + presentChangeMag);
             }else{
-                //return -1;
+                flag++;
+                //Divergence detected when the largest magnitude of the correcting terms in
+                //deltaX increased for some consecutive iterations.
+                if(flag > STD_DIVERGENCE_TOLERANCE)
+                    return -1;
             }
 
-        }while(deltaX.getMaxMag() > STD_THRESHOLD);
+        }while(presentChangeMag > STD_THRESHOLD);
 
         answer.copy(x0);
         return 0;
