@@ -139,18 +139,18 @@ public class DCNonLinEquation {
         double alpha = 0;
         //Amount of steps toward the final alpha = 1
         int steps = 10;
-        //integer indicating whether
+        //integer indicating whether the continuation method attempt was successful.
+        //  (0 = success, -1 = failure)
         int success = -1;
         //integer indicating the amount of failed attempts at continuation method
         int failedAttempts = 0;
 
+        //The node voltage vector (guess)
         IRealVector x0 = activator.realVector(size);
+        //The final computed node voltage vector
         IRealVector answer = activator.realVector(size);
 
-        //x0.setValue(0,0.1);
-        //x0.setValue(1,0.1);
-
-        while(success == -1 && failedAttempts < 3){
+        while(success == -1 && failedAttempts < STD_CONT_METHOD_ATTEMPTS){
             //skip 0th step, where the answer is going to be a zero vector.
             for(int i = 0; i < steps; i++){
 
@@ -163,6 +163,7 @@ public class DCNonLinEquation {
                     alpha = 0;
                     steps *= 10;
                     x0.clear();
+                    failedAttempts++;
                     break;
                 }
 
@@ -246,6 +247,7 @@ public class DCNonLinEquation {
                 //deltaX increased for some consecutive iterations.
                 if(flag > STD_DIVERGENCE_TOLERANCE)
                     return -1;
+                prevChangeMag = presentChangeMag;
             }
 
         }while(presentChangeMag > STD_THRESHOLD);
