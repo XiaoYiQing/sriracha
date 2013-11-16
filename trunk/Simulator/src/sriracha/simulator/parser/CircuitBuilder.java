@@ -77,6 +77,8 @@ public class CircuitBuilder
     public CircuitBuilder(String netlist)
     {
 
+        System.out.println("CircuitBuilder: CircuitBuilder(String netlist)");
+
         String[] lines = netlist.split("\\r?\\n");
 
         ArrayList<String> otherLines = new ArrayList<String>();
@@ -149,8 +151,6 @@ public class CircuitBuilder
     public OutputFilter parsePrint(String line)
     {
         String[] params = tokenizeLine(line);
-
-        System.out.println("in parsePrint: \n" + line);
 
         if (params.length < 3)
             throw new ParseException("Not enough parameters for .PRINT: " + line);
@@ -288,6 +288,8 @@ public class CircuitBuilder
      */
     public Analysis parseAnalysis(String line)
     {
+        System.out.println("CircuitBuilder: parseAnalysis(String line)");
+
         if (line.startsWith(".AC"))
             return parseSmallSignal(line);
         else if (line.startsWith(".DC"))
@@ -348,6 +350,8 @@ public class CircuitBuilder
      */
     private ACAnalysis parseSmallSignal(String line)
     {
+        System.out.println("CircuitBuilder: parseSmallSignal(String line)");
+
         String[] params = line.split("\\s+");
 
         if (params.length != 5)

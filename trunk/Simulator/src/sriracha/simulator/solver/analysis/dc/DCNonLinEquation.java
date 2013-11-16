@@ -63,7 +63,7 @@ public class DCNonLinEquation {
     }
 
     /**
-     * Apply stamp value to the matrix equation.
+     * Apply stamp value to the matrix G.
      * @param i x matrix coordinate
      * @param j y matrix coordinate
      * @param value
@@ -75,9 +75,26 @@ public class DCNonLinEquation {
         if (i == -1 || j == -1) return;
 
         if (value != 0)
+            G.addValue(i, j, value);
+
+
+    }
+
+    /**
+     * Apply stamp value to the matrix C.
+     * @param i x matrix coordinate
+     * @param j y matrix coordinate
+     * @param value
+     */
+    public void applyComplexMatrixStamp(int i, int j, double value)
+    {
+        //no stamps to ground
+        if (i == -1 || j == -1) return;
+
+        if (value != 0)
+        {
             C.addValue(i, j, value);
-
-
+        }
     }
 
     public void applySourceVectorStamp(int i, double d)
@@ -86,6 +103,16 @@ public class DCNonLinEquation {
         if (i == -1) return;
 
         b.addValue(i, d);
+    }
+
+    public DCNonLinEquation clone()
+    {
+        DCNonLinEquation clone = new DCNonLinEquation(this.circuitNodeCount);
+        clone.G = (IRealMatrix) G.clone();
+        clone.C = (IRealMatrix) C.clone();
+        clone.b = (IRealVector) b.clone();
+        clone.nonLinearElem = (ArrayList<NonLinCircuitElement>)nonLinearElem.clone();
+        return clone;
     }
 
     /**

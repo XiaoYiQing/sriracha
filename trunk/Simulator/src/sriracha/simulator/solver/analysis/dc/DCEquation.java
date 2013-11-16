@@ -13,7 +13,6 @@ public class DCEquation
 
     private IRealMatrix C;
 
-
     private IRealVector b;
 
 

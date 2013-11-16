@@ -91,7 +91,8 @@ public class Simulator implements ISimulator
 
 
     /**
-     * Parses the netlist and builds an internal representation
+     * The method where the back-end and front-end communicate.
+     * Parses the netlist and builds an internal representation.
      * First: Clear all data.
      * Second: Build the circuit.
      * Third: Set up the circuit and assign all the extra variables.
@@ -105,6 +106,7 @@ public class Simulator implements ISimulator
     {
         clearData();
 
+        System.out.println("Simulator: setNetlist(String netlist)");
 
         builder = new CircuitBuilder(netlist);
         //Add the extra variables.
