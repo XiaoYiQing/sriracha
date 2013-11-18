@@ -280,7 +280,8 @@ public class DCNonLinEquation extends DCEquation{
 
         //myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
 
-        answer = myEq.myNewtonRapComp(myEq.G, myEq.b, myEq.getNonLinearElem());
+        //answer = myEq.myNewtonRapComp(myEq.G, myEq.b, myEq.getNonLinearElem());
+        answer = myEq.solve();
         System.out.println(answer.getValue(0) + " \n" + answer.getValue(1) +
             "\n" + answer.getValue(2));
 
