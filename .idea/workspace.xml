@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e884a6dd-8d07-458d-9fc6-3adc9383ad70" name="Default" comment="Fixed closest port wire connections" />
+    <list default="true" id="e884a6dd-8d07-458d-9fc6-3adc9383ad70" name="Default" comment="Fixed closest port wire connections">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" />
+    </list>
     <ignored path="sriracha.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384808105692" ignored="false" />
@@ -26,7 +30,7 @@
     <file path="/JsMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537279877" ignored="false" />
     <file path="/JsMathActivator.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1382561502708" ignored="false" />
     <file path="/Simulator.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384630509205" ignored="false" />
-    <file path="/DCEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384808492809" ignored="false" />
+    <file path="/DCEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384808719491" ignored="false" />
     <file path="/DCAnalysis.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383080665914" ignored="false" />
     <file path="/ACEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383522240744" ignored="false" />
     <file path="/Console.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384043903486" ignored="false" />
@@ -34,7 +38,7 @@
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383936089060" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383946702337" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384043402594" ignored="false" />
-    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384808394225" ignored="false" />
+    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384809466170" ignored="false" />
     <file path="/NonLinCircuitElement.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384539837808" ignored="false" />
     <file path="/IMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537255111" ignored="false" />
     <file path="/IComplexMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537074622" ignored="false" />
@@ -137,7 +141,7 @@
       <file leaf-file-name="DCEquation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="26" selection-start="460" selection-end="460" vertical-scroll-proportion="-2.72">
+            <state line="56" column="22" selection-start="1688" selection-end="1699" vertical-scroll-proportion="-4.08">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,7 +170,7 @@
       <file leaf-file-name="DCNonLinEquation.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="0" selection-start="2912" selection-end="2912" vertical-scroll-proportion="3.941452">
+            <state line="104" column="23" selection-start="2908" selection-end="2908" vertical-scroll-proportion="0.67699116">
               <folding />
             </state>
           </provider>
@@ -1107,7 +1111,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="26" selection-start="460" selection-end="460" vertical-scroll-proportion="-2.72">
+        <state line="56" column="22" selection-start="1688" selection-end="1699" vertical-scroll-proportion="-4.08">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1116,7 +1120,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="2912" selection-end="2912" vertical-scroll-proportion="3.941452">
+        <state line="104" column="23" selection-start="2908" selection-end="2908" vertical-scroll-proportion="0.67699116">
           <folding />
         </state>
       </provider>

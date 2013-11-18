@@ -3,6 +3,7 @@ package sriracha.simulator.solver.analysis.dc;
 import sriracha.math.MathActivator;
 import sriracha.math.interfaces.IRealMatrix;
 import sriracha.math.interfaces.IRealVector;
+import sriracha.simulator.Options;
 import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.elements.Diode;
 
@@ -28,8 +29,6 @@ public class DCNonLinEquation extends DCEquation{
      */
     private MathActivator activator = MathActivator.Activator;
 
-    private int circuitNodeCount;
-
     private IRealVector f;
 
     private ArrayList<NonLinCircuitElement> nonLinearElem;
@@ -41,7 +40,6 @@ public class DCNonLinEquation extends DCEquation{
     public DCNonLinEquation(int circuitNodeCount)
     {
         super(circuitNodeCount);
-        this.circuitNodeCount = circuitNodeCount;
         f = activator.realVector(circuitNodeCount);
 
         //Note: the array list initiate with a guessed size of amount of
@@ -82,8 +80,8 @@ public class DCNonLinEquation extends DCEquation{
     public DCNonLinEquation clone()
     {
         DCNonLinEquation clone = new DCNonLinEquation(this.circuitNodeCount);
-        clone.G = (IRealMatrix) G.clone();
-        clone.b = (IRealVector) b.clone();
+        clone.G.copy(this.G);
+        clone.b.copy(this.b);
         clone.nonLinearElem = (ArrayList<NonLinCircuitElement>)nonLinearElem.clone();
         return clone;
     }
@@ -95,18 +93,21 @@ public class DCNonLinEquation extends DCEquation{
      */
     public IRealVector solve()
     {
+
+        //Note sure about this...
+        if (Options.isPrintMatrix())
+        {
+            System.out.println(G);
+            System.out.println("+\n");
+            System.out.println(f);
+            System.out.println("=\n");
+            System.out.println(b);
+        }
+
         //create a new f vector
-        int n = f.getDimension();
-        f = activator.realVector(n);
+        int n = b.getDimension();
 
-        double h = STD_H;
-        double deltaX;
-
-        IRealMatrix G1;
-        IRealVector b1;
-
-
-        return null;
+        return myNewtonRapComp(G, b, nonLinearElem);
     }
 
     //The following is a temporary method to build up Newton Iteration solver.

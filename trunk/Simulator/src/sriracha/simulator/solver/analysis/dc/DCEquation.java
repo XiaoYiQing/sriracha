@@ -9,23 +9,24 @@ import sriracha.simulator.model.CircuitElement;
 
 public class DCEquation
 {
-
-
     protected IRealMatrix G;
 
     protected IRealVector b;
 
+    protected int circuitNodeCount;
 
     protected DCEquation(int nodeCount)
     {
         G = MathActivator.Activator.realMatrix(nodeCount, nodeCount);
         b = MathActivator.Activator.realVector(nodeCount);
+        circuitNodeCount = nodeCount;
     }
 
     protected DCEquation(IRealMatrix c, IRealVector b)
     {
         this.G = c;
         this.b = b;
+        circuitNodeCount = b.getDimension();
     }
 
     /**
