@@ -40,11 +40,11 @@ public class VCCS extends VCSource
     @Override
     public void applyDC(DCEquation equation)
     {
-        equation.applyRealMatrixStamp(currentIndex, ncPlus, 1);
-        equation.applyRealMatrixStamp(currentIndex, ncMinus, -1);
-        equation.applyRealMatrixStamp(currentIndex, currentIndex, -1 / gm);
-        equation.applyRealMatrixStamp(nPlus, currentIndex, 1);
-        equation.applyRealMatrixStamp(nMinus, currentIndex, -1);
+        equation.applyMatrixStamp(currentIndex, ncPlus, 1);
+        equation.applyMatrixStamp(currentIndex, ncMinus, -1);
+        equation.applyMatrixStamp(currentIndex, currentIndex, -1 / gm);
+        equation.applyMatrixStamp(nPlus, currentIndex, 1);
+        equation.applyMatrixStamp(nMinus, currentIndex, -1);
     }
 
     @Override
