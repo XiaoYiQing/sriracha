@@ -11,20 +11,20 @@ public class DCEquation
 {
 
 
-    private IRealMatrix C;
+    protected IRealMatrix G;
 
-    private IRealVector b;
+    protected IRealVector b;
 
 
-    private DCEquation(int nodeCount)
+    protected DCEquation(int nodeCount)
     {
-        C = MathActivator.Activator.realMatrix(nodeCount, nodeCount);
+        G = MathActivator.Activator.realMatrix(nodeCount, nodeCount);
         b = MathActivator.Activator.realVector(nodeCount);
     }
 
-    private DCEquation(IRealMatrix c, IRealVector b)
+    protected DCEquation(IRealMatrix c, IRealVector b)
     {
-        this.C = c;
+        this.G = c;
         this.b = b;
     }
 
@@ -58,12 +58,12 @@ public class DCEquation
 
         if (Options.isPrintMatrix())
         {
-            System.out.println(C);
+            System.out.println(G);
             System.out.println("=\n");
             System.out.println(b);
         }
 
-        return C.solve(b);
+        return G.solve(b);
     }
 
     /**
@@ -79,7 +79,7 @@ public class DCEquation
         if (i == -1 || j == -1) return;
 
         if (value != 0)
-            C.addValue(i, j, value);
+            G.addValue(i, j, value);
 
 
     }
@@ -94,7 +94,7 @@ public class DCEquation
 
     public DCEquation clone()
     {
-        return new DCEquation(C.clone(), b.clone());
+        return new DCEquation(G.clone(), b.clone());
     }
 
 

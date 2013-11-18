@@ -16,7 +16,7 @@ import java.util.Iterator;
  * Time: 8:50 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DCNonLinEquation {
+public class DCNonLinEquation extends DCEquation{
 
     public static final double STD_H = 1e-9;
     public static final double STD_THRESHOLD = 9e-15;
@@ -30,13 +30,6 @@ public class DCNonLinEquation {
 
     private int circuitNodeCount;
 
-
-    private IRealMatrix C;
-
-    private IRealMatrix G;
-
-    private IRealVector b;
-
     private IRealVector f;
 
     private ArrayList<NonLinCircuitElement> nonLinearElem;
@@ -45,12 +38,10 @@ public class DCNonLinEquation {
      * size indicated by circuitNodeCount.
      * @param circuitNodeCount
      */
-    private DCNonLinEquation(int circuitNodeCount)
+    public DCNonLinEquation(int circuitNodeCount)
     {
+        super(circuitNodeCount);
         this.circuitNodeCount = circuitNodeCount;
-        C = activator.realMatrix(circuitNodeCount, circuitNodeCount);
-        G = activator.realMatrix(circuitNodeCount, circuitNodeCount);
-        b = activator.realVector(circuitNodeCount);
         f = activator.realVector(circuitNodeCount);
 
         //Note: the array list initiate with a guessed size of amount of
@@ -80,23 +71,6 @@ public class DCNonLinEquation {
 
     }
 
-    /**
-     * Apply stamp value to the matrix C.
-     * @param i x matrix coordinate
-     * @param j y matrix coordinate
-     * @param value
-     */
-    public void applyComplexMatrixStamp(int i, int j, double value)
-    {
-        //no stamps to ground
-        if (i == -1 || j == -1) return;
-
-        if (value != 0)
-        {
-            C.addValue(i, j, value);
-        }
-    }
-
     public void applySourceVectorStamp(int i, double d)
     {
         //no stamps to ground
@@ -109,7 +83,6 @@ public class DCNonLinEquation {
     {
         DCNonLinEquation clone = new DCNonLinEquation(this.circuitNodeCount);
         clone.G = (IRealMatrix) G.clone();
-        clone.C = (IRealMatrix) C.clone();
         clone.b = (IRealVector) b.clone();
         clone.nonLinearElem = (ArrayList<NonLinCircuitElement>)nonLinearElem.clone();
         return clone;
@@ -120,7 +93,7 @@ public class DCNonLinEquation {
      * conditions.
      * @return
      */
-    IRealVector solve()
+    public IRealVector solve()
     {
         //create a new f vector
         int n = f.getDimension();
@@ -132,26 +105,6 @@ public class DCNonLinEquation {
         IRealMatrix G1;
         IRealVector b1;
 
-        //Initial guess is a all 0 vector.
-        IRealVector x = activator.realVector(n);
-        NonLinCircuitElement nextElem;
-
-        do{
-            //G1 = G + C/h
-            G1 = (IRealMatrix)C.plus(G.times(1/h));
-            //b1 = (1/h)*C*x + b
-            b1 = (IRealVector)(((C.times(x)).times(1/h)).plus(b));
-            deltaX = 1;
-
-            while(deltaX > STD_THRESHOLD){
-                Iterator iter = nonLinearElem.iterator();
-                while(iter.hasNext()){
-                    nextElem = (NonLinCircuitElement)iter.next();
-                }
-            }
-
-
-        }while(f.getMax()>1e-15);
 
         return null;
     }
@@ -319,9 +272,9 @@ public class DCNonLinEquation {
         //myX.setValue(0,0.1);
         //myX.setValue(1,0.1);
 
-        //myEq.applyNonLinearCircuitElem(d1);
-        //myEq.applyNonLinearCircuitElem(d2);
-        //myEq.applyNonLinearCircuitElem(d3);
+        myEq.applyNonLinearCircuitElem(d1);
+        myEq.applyNonLinearCircuitElem(d2);
+        myEq.applyNonLinearCircuitElem(d3);
 
 
         //myEq.myNewtonRap(myEq.G, myEq.b, myEq.getNonLinearElem(), myX,answer);
