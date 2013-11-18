@@ -40,7 +40,10 @@ public class DCAnalysis extends Analysis
     @Override
     public void extractSolvingInfo(Circuit circuit)
     {
-        originalEquation = DCEquation.generate(circuit);
+        if(circuit.isLinear())
+            originalEquation = DCEquation.generate(circuit);
+        else
+            originalEquation = DCNonLinEquation.generate(circuit);
     }
 
     @Override

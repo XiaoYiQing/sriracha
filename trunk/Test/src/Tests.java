@@ -1,6 +1,8 @@
 import sriracha.math.MathActivator;
 import sriracha.math.interfaces.*;
+import sriracha.simulator.model.Circuit;
 import sriracha.simulator.model.elements.Diode;
+import sriracha.simulator.model.elements.Resistor;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
 import sriracha.simulator.solver.analysis.dc.DCNonLinEquation;
 
@@ -54,7 +56,7 @@ public class Tests {
         System.out.println("C*b:\n" + k);
         */
 
-        /*DCEquation myEq1 = new DCEquation(5);
+        DCEquation myEq1 = new DCEquation(5);
         DCNonLinEquation myEq2 = new DCNonLinEquation(5);
 
         ArrayList<DCEquation> myEqList = new ArrayList<DCEquation>();
@@ -64,7 +66,17 @@ public class Tests {
         Diode D1 = new Diode("D1");
         for(int i = 0; i < myEqList.size(); i++){
             D1.applyDC(myEqList.get(i));
-        }*/
+        }
 
+        /*
+        Circuit myCirc = new Circuit("MyCircuit");
+        Resistor R1 = new Resistor("R1", 1);
+        Diode D1 = new Diode("D1");
+        myCirc.addElement(R1);
+        System.out.println(myCirc.isLinear());
+
+        myCirc.addElement(D1);
+        System.out.println(myCirc.isLinear());
+        */
     }
 }

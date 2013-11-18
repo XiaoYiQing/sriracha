@@ -116,6 +116,21 @@ public class Circuit implements ICollectElements {
         return evCount + getNodeCount();
     }
 
+    /**
+     * Return whether or not the Circuit is linear by determining if there are
+     * any NonLinCircuitElement among the elements of the Circuit.
+     * @return false if there are no NonLinCircuitElement, true if there are.
+     */
+    public boolean isLinear(){
+        Iterator iter = elements.entrySet().iterator();
+        for(Map.Entry<String, CircuitElement>entry : elements.entrySet()){
+            if(entry.getValue() instanceof  NonLinCircuitElement)
+                return false;
+        }
+
+        return true;
+    }
+
     @Override
     public String toString() {
         String s = "";

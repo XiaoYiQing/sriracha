@@ -4,6 +4,8 @@ import sriracha.math.MathActivator;
 import sriracha.math.interfaces.IRealMatrix;
 import sriracha.math.interfaces.IRealVector;
 import sriracha.simulator.Options;
+import sriracha.simulator.model.Circuit;
+import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.model.NonLinCircuitElement;
 import sriracha.simulator.model.elements.Diode;
 
@@ -58,6 +60,31 @@ public class DCNonLinEquation extends DCEquation{
         clone.b.copy(this.b);
         clone.nonLinearElem = (ArrayList<NonLinCircuitElement>)nonLinearElem.clone();
         return clone;
+    }
+
+    /**
+     * This method acts as the official constructor of DCNonLinEquation objects.
+     * The method apply the stamps of the circuit elements to the matrix equations.
+     * The "applyDC" method of circuit elements will call the "applyMatrixStamp" or
+     * "applySourceVectorStamp" method of DCEquation class through the elements of
+     * the circuit.
+     *
+     * @param circuit Target circuit object from which circuit elements are obtained.
+     *                It is expected to have already been set up with all the
+     *                extra variables present.
+     * @return
+     */
+    public static DCEquation generate(Circuit circuit)
+    {
+        DCNonLinEquation equation = new DCNonLinEquation(circuit.getMatrixSize());
+
+        for (CircuitElement element : circuit.getElements())
+        {
+            element.applyDC(equation);
+        }
+
+        return equation;
+
     }
 
     /**
