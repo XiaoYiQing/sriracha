@@ -32,8 +32,8 @@ public class CCCS extends CCSource
     @Override
     public void applyDC(DCEquation equation)
     {
-        equation.applyMatrixStamp(nPlus, dummySource.getCurrentVarIndex(), gm);
-        equation.applyMatrixStamp(nMinus, dummySource.getCurrentVarIndex(), -gm);
+        equation.applyRealMatrixStamp(nPlus, dummySource.getCurrentVarIndex(), gm);
+        equation.applyRealMatrixStamp(nMinus, dummySource.getCurrentVarIndex(), -gm);
 
     }
 

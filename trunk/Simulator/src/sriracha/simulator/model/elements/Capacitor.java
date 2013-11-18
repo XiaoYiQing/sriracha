@@ -3,6 +3,7 @@ package sriracha.simulator.model.elements;
 import sriracha.simulator.model.CircuitElement;
 import sriracha.simulator.solver.analysis.ac.ACEquation;
 import sriracha.simulator.solver.analysis.dc.DCEquation;
+import sriracha.simulator.solver.analysis.dc.DCNonLinEquation;
 
 public class Capacitor extends CircuitElement
 {
@@ -53,6 +54,10 @@ public class Capacitor extends CircuitElement
     @Override
     public void applyDC(DCEquation equation)
     {
+        equation.applyComplexMatrixStamp(nPlus, nPlus, capacitance);
+        equation.applyComplexMatrixStamp(nPlus, nMinus, -capacitance);
+        equation.applyComplexMatrixStamp(nMinus, nPlus, -capacitance);
+        equation.applyComplexMatrixStamp(nMinus, nMinus, capacitance);
     }
 
     @Override

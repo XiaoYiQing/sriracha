@@ -33,10 +33,10 @@ public class Resistor extends CircuitElement
     @Override
     public void applyDC(DCEquation equation)
     {
-        equation.applyMatrixStamp(nodeA, nodeA, G);
-        equation.applyMatrixStamp(nodeB, nodeB, G);
-        equation.applyMatrixStamp(nodeA, nodeB, -G);
-        equation.applyMatrixStamp(nodeB, nodeA, -G);
+        equation.applyRealMatrixStamp(nodeA, nodeA, G);
+        equation.applyRealMatrixStamp(nodeB, nodeB, G);
+        equation.applyRealMatrixStamp(nodeA, nodeB, -G);
+        equation.applyRealMatrixStamp(nodeB, nodeA, -G);
     }
 
     @Override
