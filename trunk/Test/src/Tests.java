@@ -1,6 +1,10 @@
 import sriracha.math.MathActivator;
 import sriracha.math.interfaces.*;
+import sriracha.simulator.model.elements.Diode;
+import sriracha.simulator.solver.analysis.dc.DCEquation;
+import sriracha.simulator.solver.analysis.dc.DCNonLinEquation;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -50,8 +54,17 @@ public class Tests {
         System.out.println("C*b:\n" + k);
         */
 
+        /*DCEquation myEq1 = new DCEquation(5);
+        DCNonLinEquation myEq2 = new DCNonLinEquation(5);
 
+        ArrayList<DCEquation> myEqList = new ArrayList<DCEquation>();
+        myEqList.add(myEq1);
+        myEqList.add(myEq2);
 
+        Diode D1 = new Diode("D1");
+        for(int i = 0; i < myEqList.size(); i++){
+            D1.applyDC(myEqList.get(i));
+        }*/
 
     }
 }

@@ -51,32 +51,6 @@ public class DCNonLinEquation extends DCEquation{
         nonLinearElem.add(input);
     }
 
-    /**
-     * Apply stamp value to the matrix G.
-     * @param i x matrix coordinate
-     * @param j y matrix coordinate
-     * @param value
-     */
-    public void applyMatrixStamp(int i, int j, double value)
-    {
-
-        //no stamps to ground
-        if (i == -1 || j == -1) return;
-
-        if (value != 0)
-            G.addValue(i, j, value);
-
-
-    }
-
-    public void applySourceVectorStamp(int i, double d)
-    {
-        //no stamps to ground
-        if (i == -1) return;
-
-        b.addValue(i, d);
-    }
-
     public DCNonLinEquation clone()
     {
         DCNonLinEquation clone = new DCNonLinEquation(this.circuitNodeCount);
