@@ -37,7 +37,7 @@
     <file path="/Diode.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384811151421" ignored="false" />
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383936089060" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383946702337" ignored="false" />
-    <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384818101703" ignored="false" />
+    <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384818598656" ignored="false" />
     <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384814220384" ignored="false" />
     <file path="/NonLinCircuitElement.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384810350614" ignored="false" />
     <file path="/IMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537255111" ignored="false" />
@@ -140,21 +140,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DCAnalysis.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="DCAnalysis.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="48" selection-start="1685" selection-end="1701" vertical-scroll-proportion="-14.52">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tests.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Tests.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="40" selection-start="2075" selection-end="2075" vertical-scroll-proportion="0.3908046">
+            <state line="59" column="10" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1874#1886#0" expanded="true" />
+                <element signature="e#1922#1934#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,7 +181,7 @@
       <file leaf-file-name="DCNonLinEquation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="25" selection-start="2800" selection-end="2800" vertical-scroll-proportion="0.0">
+            <state line="84" column="24" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -190,7 +190,7 @@
       <file leaf-file-name="Diode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="26" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.0">
+            <state line="170" column="23" selection-start="4841" selection-end="4841" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -252,11 +252,11 @@
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/NonLinCircuitElement.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java" />
-        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java" />
-        <option value="$PROJECT_DIR$/trunk/Test/src/Tests.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java" />
+        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java" />
+        <option value="$PROJECT_DIR$/trunk/Test/src/Tests.java" />
       </list>
     </option>
   </component>
@@ -767,7 +767,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager" selected="Application.Console">
+  <component name="RunManager" selected="Application.Tests">
     <configuration default="false" name="Console" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Console" />
       <option name="VM_PARAMETERS" />
@@ -970,8 +970,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Console" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Tests" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Tests" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Console" />
         <item index="2" class="java.lang.String" itemvalue="Application.DCNonLinEquation" />
       </list>
     </recent_temporary>
@@ -1166,13 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="26" selection-start="4882" selection-end="4882" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/ICollectElements.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="43" selection-start="193" selection-end="193" vertical-scroll-proportion="0.34492755">
@@ -1180,30 +1173,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="27" selection-start="3610" selection-end="3610" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Test/src/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="49" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="25" selection-start="2800" selection-end="2800" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="48" selection-start="1685" selection-end="1701" vertical-scroll-proportion="-14.52">
           <folding />
         </state>
       </provider>
@@ -1217,12 +1189,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="24" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="27" selection-start="3610" selection-end="3610" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="23" selection-start="4841" selection-end="4841" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="40" selection-start="2075" selection-end="2075" vertical-scroll-proportion="0.3908046">
+        <state line="59" column="10" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#1874#1886#0" expanded="true" />
+            <element signature="e#1922#1934#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>

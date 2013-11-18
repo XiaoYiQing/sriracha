@@ -82,9 +82,7 @@ public class DCNonLinEquation extends DCEquation{
         {
             element.applyDC(equation);
         }
-
         return equation;
-
     }
 
     /**
