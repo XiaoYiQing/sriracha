@@ -57,6 +57,7 @@ public class Tests {
         */
 
         DCEquation myEq1 = new DCEquation(5);
+        //DCEquation myEq2 = new DCEquation(5);
         DCNonLinEquation myEq2 = new DCNonLinEquation(5);
 
         ArrayList<DCEquation> myEqList = new ArrayList<DCEquation>();
@@ -65,7 +66,9 @@ public class Tests {
 
         Diode D1 = new Diode("D1");
         for(int i = 0; i < myEqList.size(); i++){
-            D1.applyDC(myEqList.get(i));
+            DCEquation tempEq = myEqList.get(i).clone();
+            if(tempEq instanceof DCNonLinEquation)
+                System.out.println("Found");
         }
 
         /*

@@ -93,6 +93,9 @@ public class DCNonLinEquation extends DCEquation{
     public IRealVector solve()
     {
 
+        System.out.println(G);
+        System.out.println(b);
+
         //Note sure about this...
         if (Options.isPrintMatrix())
         {

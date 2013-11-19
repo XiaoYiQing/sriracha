@@ -39,4 +39,11 @@ public class DCSweep
     {
         return step;
     }
+
+    public String toString(){
+        return ("DCSweep -> Source: " + source.name +
+                "\b Start value: " + startValue +
+                "\b endValue: " + endValue +
+                "\b step: " + step);
+    }
 }

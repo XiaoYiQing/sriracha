@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e884a6dd-8d07-458d-9fc6-3adc9383ad70" name="Default" comment="Fixed closest port wire connections">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/Manifest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" afterPath="$PROJECT_DIR$/trunk/Frontend/gen/sriracha/frontend/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/trunk/Test/src/Tests.java" afterPath="$PROJECT_DIR$/trunk/Test/src/Tests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sriracha.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384808105692" ignored="false" />
+    <file path="/Dummy.txt" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384880277427" ignored="false" />
     <file path="/fragment.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1379702167405" ignored="false" />
     <file path="/WireManager.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380666651345" ignored="false" />
     <file path="/CircuitDesigner.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1380581236001" ignored="false" />
-    <file path="/CircuitBuilder.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384042515393" ignored="false" />
+    <file path="/CircuitBuilder.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384881295772" ignored="false" />
     <file path="/JsComplex.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384482210588" ignored="false" />
     <file path="$PROJECT_DIR$/../../IntelliJ/.idea/workspace.xml" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1381358510539" ignored="false" />
     <file path="$PROJECT_DIR$/../../IntelliJ/src/HelloWorld.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1381358469975" ignored="false" />
@@ -38,7 +37,7 @@
     <file path="/CircuitElementModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383936089060" ignored="false" />
     <file path="/DiodeModel.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1383946702337" ignored="false" />
     <file path="/Tests.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384818598656" ignored="false" />
-    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384814220384" ignored="false" />
+    <file path="/DCNonLinEquation.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384886088888" ignored="false" />
     <file path="/NonLinCircuitElement.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384810350614" ignored="false" />
     <file path="/IMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537255111" ignored="false" />
     <file path="/IComplexMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537074622" ignored="false" />
@@ -52,6 +51,7 @@
     <file path="/JsRealMatrix.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384556344419" ignored="false" />
     <file path="/a.dummy" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384537687825" ignored="false" />
     <file path="/IRealVector.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384556305988" ignored="false" />
+    <file path="/DCSweep.java" changelist="e884a6dd-8d07-458d-9fc6-3adc9383ad70" time="1384881787103" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,18 +132,34 @@
       <file leaf-file-name="DCEquation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="10" selection-start="432" selection-end="432" vertical-scroll-proportion="-6.8">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="46" column="0" selection-start="1519" selection-end="1519" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DCAnalysis.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DCAnalysis.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="49" selection-start="1194" selection-end="1194" vertical-scroll-proportion="-8.84">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Console.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/trunk/Test/src/Console.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CircuitBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="182" column="58" selection-start="6983" selection-end="6983" vertical-scroll-proportion="-10.2">
               <folding />
             </state>
           </provider>
@@ -153,26 +169,6 @@
         <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="59" column="10" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#1922#1934#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VoltageSource.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/VoltageSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="36" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DCResult.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="23" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -181,7 +177,16 @@
       <file leaf-file-name="DCNonLinEquation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="24" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
+            <state line="96" column="28" selection-start="3167" selection-end="3167" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurrentSource.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/CurrentSource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="7" selection-start="730" selection-end="733" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -190,25 +195,7 @@
       <file leaf-file-name="Diode.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="23" selection-start="4841" selection-end="4841" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SubCircuit.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/SubCircuit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="22" selection-start="4702" selection-end="4702" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CircuitElement.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/CircuitElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="0" selection-start="1893" selection-end="1893" vertical-scroll-proportion="0.0">
+            <state line="45" column="0" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -241,22 +228,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsVector.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IVector.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealMatrix.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealMatrix.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/interfaces/IRealVector.java" />
         <option value="$PROJECT_DIR$/trunk/Math/src/sriracha/math/wrappers/jscience/JsRealVector.java" />
-        <option value="$PROJECT_DIR$/trunk/Test/src/Console.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/Simulator.java" />
-        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/NonLinCircuitElement.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/Circuit.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java" />
         <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java" />
-        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java" />
         <option value="$PROJECT_DIR$/trunk/Test/src/Tests.java" />
+        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java" />
+        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCSweep.java" />
+        <option value="$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java" />
+        <option value="$PROJECT_DIR$/trunk/Test/src/Console.java" />
       </list>
     </option>
   </component>
@@ -292,7 +279,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -744,6 +730,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -760,14 +747,14 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.Tests">
+  <component name="RunManager" selected="Application.Console">
     <configuration default="false" name="Console" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="Console" />
       <option name="VM_PARAMETERS" />
@@ -854,6 +841,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -879,19 +879,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -970,8 +957,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Tests" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Console" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Console" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Tests" />
         <item index="2" class="java.lang.String" itemvalue="Application.DCNonLinEquation" />
       </list>
     </recent_temporary>
@@ -1020,7 +1007,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36656442" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39765102" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
@@ -1032,10 +1018,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2952183" sideWeight="0.73926383" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2607362" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27442828" sideWeight="0.63496935" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36503068" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36656442" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24866024" sideWeight="0.47986576" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1110,41 +1097,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="212" column="28" selection-start="9183" selection-end="9183" vertical-scroll-proportion="0.3325062">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="23" selection-start="474" selection-end="474" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCSweep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="29" selection-start="127" selection-end="127" vertical-scroll-proportion="0.20531401">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/Source.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="40" selection-start="1032" selection-end="1032" vertical-scroll-proportion="0.042394016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/NonLinCircuitElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="80" selection-start="993" selection-end="993" vertical-scroll-proportion="0.5338164">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/VoltageSource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="36" selection-start="1192" selection-end="1192" vertical-scroll-proportion="0.0">
@@ -1173,25 +1125,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Test/src/Console.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="49" selection-start="689" selection-end="689" vertical-scroll-proportion="0.0">
+        <state line="59" column="10" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCEquation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="10" selection-start="432" selection-end="432" vertical-scroll-proportion="-6.8">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state line="46" column="0" selection-start="1519" selection-end="1519" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/Source.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="24" selection-start="2945" selection-end="2945" vertical-scroll-proportion="0.0">
+        <state line="47" column="25" selection-start="1447" selection-end="1447" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1203,23 +1153,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCSweep.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="23" selection-start="4841" selection-end="4841" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trunk/Test/src/Tests.java">
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Capacitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="10" selection-start="1771" selection-end="1771" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1922#1934#0" expanded="true" />
-          </folding>
+        <state line="55" column="18" selection-start="1323" selection-end="1323" vertical-scroll-proportion="0.6242938">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCAnalysis.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="49" selection-start="1194" selection-end="1194" vertical-scroll-proportion="-8.84">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/Diode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/parser/CircuitBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="182" column="58" selection-start="6983" selection-end="6983" vertical-scroll-proportion="-10.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/solver/analysis/dc/DCNonLinEquation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="28" selection-start="3167" selection-end="3167" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Simulator/src/sriracha/simulator/model/elements/sources/CurrentSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="7" selection-start="730" selection-end="733" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trunk/Test/src/Console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
