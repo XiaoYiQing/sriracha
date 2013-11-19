@@ -76,9 +76,6 @@ public class CircuitBuilder
      */
     public CircuitBuilder(String netlist)
     {
-
-        System.out.println("CircuitBuilder: CircuitBuilder(String netlist)");
-
         String[] lines = netlist.split("\\r?\\n");
 
         ArrayList<String> otherLines = new ArrayList<String>();
@@ -175,13 +172,6 @@ public class CircuitBuilder
             {
                 NodeDataFormat dataFormat = StringToOutputType(params[i].substring(1, params[i].indexOf('(')), line);
                 String[] nodeList = parseBracketContents(params[i].substring(params[i].indexOf('('), params[i].length()));
-
-                for(int m = 0; m < nodeList.length; m++){
-                    System.out.print(nodeList[m] + " ");
-                }
-                System.out.println("\nnodeList above!");
-
-
 
                 for (String node : nodeList)
                     if (node.length() == 0)
@@ -288,8 +278,6 @@ public class CircuitBuilder
      */
     public Analysis parseAnalysis(String line)
     {
-        System.out.println("CircuitBuilder: parseAnalysis(String line)");
-
         if (line.startsWith(".AC"))
             return parseSmallSignal(line);
         else if (line.startsWith(".DC"))
