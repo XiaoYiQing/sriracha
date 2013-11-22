@@ -84,7 +84,6 @@ public class Simulator implements ISimulator
         {
             System.out.println(circuit);
         }
-        System.out.println(circuit);
         return saveAll();
 
     }
@@ -105,8 +104,6 @@ public class Simulator implements ISimulator
     public boolean setNetlist(String netlist)
     {
         clearData();
-
-        System.out.println("Simulator: setNetlist(String netlist)");
 
         builder = new CircuitBuilder(netlist);
         //Add the extra variables.

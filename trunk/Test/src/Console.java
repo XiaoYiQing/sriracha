@@ -78,6 +78,8 @@ public class Console
             //runAndPrint("C:\\Users\\antoine\\Dev\\Sriracha\\bnetlist.txt");
             runAndPrint("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist3.txt");
 
+            runAndPrint("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist2.txt");
+
 
             //loadNetslist("C:\\1- University stuff\\ECSE 498\\Tests\\bnetlist.txt");
             //List<IPrintData>results = simulator.getAllResults();
